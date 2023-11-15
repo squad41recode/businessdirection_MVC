@@ -1,0 +1,68 @@
+package br.com.BusinessDirection.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import br.com.BusinessDirection.model.Empreendedor;
+import br.com.BusinessDirection.repository.EmpreendedorRepository;
+
+@Controller
+@RequestMapping("/empreendedores")
+public class EmpreendedorController {
+
+	@Autowired
+	private EmpreendedorRepository empreendedorRepository;
+
+	@GetMapping
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/index");
+		modelAndView.addObject("Empreendedores", empreendedorRepository.findAll());
+
+		return modelAndView;
+	}
+
+	//TERMINAR TODOS OS RELACIOMENTOS DA CLASSE EMPREENDEDOR
+	@GetMapping("/{id}")
+	public ModelAndView detalhes(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/detalhes");
+		modelAndView.addObject("empreendedor", empreendedorRepository.getReferenceById(id));
+
+		return modelAndView;
+	}
+
+	@GetMapping("/cadastrar")
+	public ModelAndView cadastrar() {
+		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/formulario");
+		modelAndView.addObject("empreendedor", new Empreendedor());
+
+		return modelAndView;
+	}
+
+	@GetMapping("/editar/{id}")
+	public ModelAndView editar(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/formulario");
+		modelAndView.addObject("empreendedor", empreendedorRepository.getReferenceById(id));
+
+		return modelAndView;
+	}
+
+	@PostMapping({ "/cadastrar", "/editar/{id}" })
+	public String salvar(Empreendedor empreendedor) {
+		empreendedorRepository.save(empreendedor);
+
+		return "redirect:/empreendedores";
+	}
+
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable Long id) {
+		empreendedorRepository.deleteById(id);
+
+		return "redirect:/empreendedores";
+	}
+
+}
