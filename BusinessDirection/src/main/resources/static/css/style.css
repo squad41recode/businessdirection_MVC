@@ -9,6 +9,7 @@
 }
 
 :root {
+	--cor0: rgb(204, 229, 255);
   --cor1: rgb(125, 183, 250);
   --cor2: rgb(64, 123, 255);
   --cor2-1: rgb(0, 123, 255);
@@ -404,3 +405,29 @@ footer .bi-heart-fill:hover {
 .pg-home .card-text {
   font-family: 'Rubik', sans-serif;
 }
+
+/*MENU CRUD*/
+
+.menuCrud h1 {
+	color: var(--cor3) !important;
+    background: var(--cor0) !important;
+    padding: 15px 0;
+    margin: 0;
+}
+
+.menuCrud ul {
+   /* background: rgb(255, 255, 255);*/
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.menuCrud .nav-item .nav-link {
+	color: var(--cor2);
+}
+
+/*.menuCrud .nav-item .active {
+	color: var(--bg-color1);
+	font-weight: bold;
+    border-bottom: 2px solid var(--cor2);
+}
+  */      
+    

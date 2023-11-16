@@ -14,7 +14,7 @@ public class Mentor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idMentor;
+	private Long id;
 
 	private String nome;
 	private String sobrenome;
@@ -27,10 +27,10 @@ public class Mentor {
 		super();
 	}
 
-	public Mentor(Long idMentor, String nome, String sobrenome, String whatsapp, String email, String tipoExperiencia,
+	public Mentor(Long id, String nome, String sobrenome, String whatsapp, String email, String tipoExperiencia,
 			Date dataNascimento) {
 		super();
-		this.idMentor = idMentor;
+		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.whatsapp = whatsapp;
@@ -39,12 +39,12 @@ public class Mentor {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Long getIdMentor() {
-		return idMentor;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdMentor(Long idMentor) {
-		this.idMentor = idMentor;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -97,7 +97,7 @@ public class Mentor {
 
 	@Override
 	public String toString() {
-		return "Mentor [idMentor=" + idMentor + ", nome=" + nome + ", sobrenome=" + sobrenome + ", whatsapp=" + whatsapp
+		return "Mentor [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", whatsapp=" + whatsapp
 				+ ", email=" + email + ", tipoExperiencia=" + tipoExperiencia + ", dataNascimento=" + dataNascimento
 				+ "]";
 	}

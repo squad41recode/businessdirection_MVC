@@ -1,0 +1,20 @@
+<!-- Content Header (Page header) -->
+<div th:fragment="content-header (title)" class="content-header ">
+
+	<div class="row text-center m-0 p-0 menuCrud">
+		<h1 class=" " th:include="${title}">Titulo do main</h1>
+		<ul class="nav justify-content-center ">
+			<li class="nav-item">
+				<a th:href="@{/empreendedores}" class="nav-link">
+					Empreendedores
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/mentores}" class="nav-link">
+					Mentores
+				</a>
+			</li>
+		</ul>
+	</div>
+
+</div>
