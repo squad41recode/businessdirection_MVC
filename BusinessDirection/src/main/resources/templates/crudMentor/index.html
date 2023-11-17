@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Listagem Mentor</title>
+</head>
+
+<body>
+	<main>
+		<div class="row">
+			<div class="col-sm-12">
+				
+				<a th:href="@{/mentores/cadastrar}" class="btn btn-primary my-1">Novo Mentor</a>
+				
+				<div class="card">
+					<div class="card-body table-responsive p-0">
+						<table class="table table-hover text-nowrap">
+							<thead class=" ">
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>Email</th>
+									<th>WhatsApp</th>
+									<th>Tipo de Experiência</th>
+									<th>Data de Nascimento</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="mentor : ${Mentores}">
+									<td th:text="${mentor.id}">000</td>
+									<td>
+										<span th:text="${mentor.nome}">Maria</span>
+										<span th:text="${mentor.sobrenome}">Silva</span>
+									</td>
+									<td th:text="${mentor.email}">maria@email.com</td>
+									<td th:text="${mentor.whatsapp}">(99) 99999-0000</td>
+									<td th:text="${mentor.tipoExperiencia}"></td>
+									<td th:text="${mentor.dataNascimento}">01/01/1991</td>
+									<td>
+										<div class="btn-group">
+											<a type="button" data-placement="top"
+												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
+												th:href="@{/mentores/{id} (id=${mentor.id})}">
+												<i class="bi bi-info-circle"></i>
+											</a>
+											<a type="button" data-placement="top"
+												data-content="Editar" data-trigger="hover" class="btn btn-warning"
+												th:href="@{/mentores/editar/{id} (id=${mentor.id})}">
+												<i class="bi bi-pencil-square"></i>
+											</a>
+											<a type="button" data-placement="top"
+												data-content="Remover" data-trigger="hover" class="btn btn-danger"
+												th:href="@{/mentores/excluir/{id} (id=${mentor.id})}"
+												onclick="return confirm('Tem certeza que deseja excluir o mentor?');">
+												<i class="bi bi-trash3"></i>
+											</a>
+										</div>
+									<td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
