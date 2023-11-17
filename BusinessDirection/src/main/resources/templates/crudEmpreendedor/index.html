@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/style.css">
-	<title>Lista de Empreendedores - businessdirection</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<title>Empreendedores</title>
 </head>
-
 <body>
 	<main>
 		<div class="row">
 			<div class="col-sm-12">
+				
+				<a th:href="@{/empreendedores/cadastrar}" class="btn btn-primary my-1">Novo Empreendedor</a>
+				
 				<div class="card">
+					
 					<div class="card-body table-responsive p-0">
 						<table class="table table-hover text-nowrap">
 							<thead>
 								<tr>
-									<th>ID</th>
+									<th>Id</th>
 									<th>Nome</th>
 									<th>E-mail</th>
 									<th>Telefone</th>
@@ -31,7 +29,10 @@
 							<tbody>
 								<tr th:each="empreendedor : ${Empreendedores}">
 									<td th:text="${empreendedor.id}">183</td>
-									<td th:text="${empreendedor.nome}">Clara Giovana Daniela Duarte</td>
+									<td>
+										<span th:text="${empreendedor.nome}">Maria</span>
+										<span th:text="${empreendedor.sobrenome}">Silva</span>
+									</td>
 									<td th:text="${empreendedor.email}">clara_giovana@gmail.com</td>
 									<td th:text="${empreendedor.telefone}">(96) 98195-9127</td>
 									<td th:text="${empreendedor.cidade}">Rio de Janeiro</td>
@@ -41,22 +42,21 @@
 											<a type="button" data-toggle="popover" data-placement="top"
 												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
 												th:href="@{/empreendedores/{id} (id=${empreendedor.id})}">
-												<i class="fas fa-eye"></i>
+												<i class="bi bi-eye"></i>
 											</a>
-											<!-- sec:authorize="hasAuthority('ADMIN')"-->
+				
 											<a type="button" data-toggle="popover"
 												data-placement="top" data-content="Editar" data-trigger="hover"
 												class="btn btn-warning"
 												th:href="@{/empreendedores/editar/{id} (id=${empreendedor.id})}">
-												<i class="fas fa-edit"></i>
+												<i class="bi bi-pencil-square"></i>
 											</a>
-											<!-- sec:authorize="hasAuthority('ADMIN')"-->
 											<a type="button" data-toggle="popover"
 												data-placement="top" data-content="Remover" data-trigger="hover"
 												class="btn btn-danger"
 												th:href="@{/empreendedores/excluir/{id} (id=${empreendedor.id})}"
 												onclick="return confirm('Tem certeza que deseja excluir?');">
-												<i class="fas fa-trash"></i>
+												<i class="bi bi-trash3"></i>
 											</a>
 										</div>
 									<td>
@@ -64,11 +64,9 @@
 							</tbody>
 						</table>
 					</div>
-					<!-- /.card-body -->
 				</div>
 			</div>
 		</div>
 	</main>
 </body>
-
 </html>

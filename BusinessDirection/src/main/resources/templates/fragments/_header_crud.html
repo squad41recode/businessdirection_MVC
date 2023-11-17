@@ -1,9 +1,9 @@
-<!-- Content Header (Page header) -->
-<div th:fragment="content-header (title)" class="content-header ">
+<!-- header crud -->
+<div th:fragment="conteudo-header (title)" >
 
-	<div class="row text-center m-0 p-0 menuCrud">
+	<div class="row text-center mx-0 my-2 p-0 menuCrud">
 		<h1 class=" " th:include="${title}">Titulo do main</h1>
-		<ul class="nav justify-content-center ">
+		<ul class="nav justify-content-center p-0">
 			<li class="nav-item">
 				<a th:href="@{/empreendedores}" class="nav-link">
 					Empreendedores

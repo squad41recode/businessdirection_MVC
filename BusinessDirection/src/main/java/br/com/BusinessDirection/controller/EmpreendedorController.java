@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.BusinessDirection.enums.UF;
 import br.com.BusinessDirection.model.Empreendedor;
 import br.com.BusinessDirection.repository.EmpreendedorRepository;
 
@@ -39,6 +40,7 @@ public class EmpreendedorController {
 	public ModelAndView cadastrar() {
 		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/formulario");
 		modelAndView.addObject("empreendedor", new Empreendedor());
+		modelAndView.addObject("estados", UF.values());
 
 		return modelAndView;
 	}
@@ -47,6 +49,7 @@ public class EmpreendedorController {
 	public ModelAndView editar(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/formulario");
 		modelAndView.addObject("empreendedor", empreendedorRepository.getReferenceById(id));
+		modelAndView.addObject("estados", UF.values());
 
 		return modelAndView;
 	}
