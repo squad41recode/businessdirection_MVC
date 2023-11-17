@@ -1,51 +1,55 @@
-	<header  th:fragment="nav " class="  ">
-		
-		<nav class="navbar navbar-expand-md px-md-1" id="menu">
-			<div class="container-fluid ">
-				<!-- logo fixed-top-->
-				<a class="navbar-brand me-auto" href="#">
-					<img  th:src="@{/img/logo-fundos-brancos.png}"  alt="logo" class="logo">
-				</a>
-				<!-- btn menu telas pequenas -->
-				<button class="btn d-md-none justify-content-end" type="button" data-bs-toggle="offcanvas"
-					data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" id="offcanvas-btn">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<!-- offcanvas -->
-				<div class="offcanvas offcanvas-end " tabindex="-1" id="navbarOffcanvasLg"
-					aria-labelledby="navbarOffcanvasLgLabel">
-					<!--offcanvas header-->
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasLabel">
-							<img th:src="@{/img/logo-fundos-brancos.png}" alt="logo" class="logo">
-						</h5>
-						<button type="button" class="btn-close " data-bs-dismiss="offcanvas" data-bs-target="#offcanvas"
-							aria-label="Close"></button>
-					</div>
-					<!--offcanvas body-->
-					<div class="offcanvas-body">
-						<ul class="navbar-nav justify-content-md-center align-items-md-center flex-grow-1">
-							<!-- navbar links -->
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="index.html">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="./pages/ferramentas.html">Ferramentas</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="./pages/sobre.html">Sobre Nós</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="./pages/contato.html">Contato</a>
-							</li>
-						</ul>
-						<!-- btn entrar -->
-						<div class="btn-cad-ent my-3 my-md-0">
-							<a href="./pages/entrar.html" class="btn btn-light">Entrar</a>
-							<a href="./pages/cadastrar.html" class="btn btn-primary">Cadastrar</a>
-						</div>
+<header th:fragment="nav " class="  ">
+
+	<nav class="navbar navbar-expand-md px-md-1" id="menu">
+		<div class="container-fluid ">
+			<!-- logo fixed-top-->
+			<a class="navbar-brand me-auto" href="#">
+				<img th:src="@{/img/logo-fundos-brancos.png}" alt="logo" class="logo">
+			</a>
+			<!-- btn menu telas pequenas -->
+			<button class="btn d-md-none justify-content-end" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" id="offcanvas-btn">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- offcanvas -->
+			<div class="offcanvas offcanvas-end " tabindex="-1" id="navbarOffcanvasLg"
+				aria-labelledby="navbarOffcanvasLgLabel">
+				<!--offcanvas header-->
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasLabel">
+						<img th:src="@{/img/logo-fundos-brancos.png}" alt="logo" class="logo">
+					</h5>
+					<button type="button" class="btn-close " data-bs-dismiss="offcanvas" data-bs-target="#offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<!--offcanvas body-->
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-md-center align-items-md-center flex-grow-1">
+						<!-- navbar links -->
+						<li class="nav-item">
+							<a class="nav-link " href="index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./pages/ferramentas.html">Ferramentas</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" th:href="@{/}">Admin</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="./pages/sobre.html">Sobre Nós</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./pages/contato.html">Contato</a>
+						</li>
+					</ul>
+					<!-- btn entrar -->
+					<div class="btn-cad-ent my-3 my-md-0">
+						<a href="./pages/entrar.html" class="btn btn-light">Entrar</a>
+						<a href="./pages/cadastrar.html" class="btn btn-primary">Cadastrar</a>
 					</div>
 				</div>
 			</div>
-		</nav>
-	</header>
+		</div>
+	</nav>
+</header>

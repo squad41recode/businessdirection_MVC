@@ -2,7 +2,7 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 <head>
-	<title>Empreendedores</title>
+	<title>Listagem Empreendedor</title>
 </head>
 <body>
 	<main>
@@ -33,27 +33,22 @@
 										<span th:text="${empreendedor.nome}">Maria</span>
 										<span th:text="${empreendedor.sobrenome}">Silva</span>
 									</td>
-									<td th:text="${empreendedor.email}">clara_giovana@gmail.com</td>
-									<td th:text="${empreendedor.telefone}">(96) 98195-9127</td>
+									<td th:text="${empreendedor.email}">maria@email.com</td>
+									<td th:text="${empreendedor.telefone}">(99) 99999-0000</td>
 									<td th:text="${empreendedor.cidade}">Rio de Janeiro</td>
 									<td th:text="${empreendedor.estado}">RJ</td>
 									<td>
-										<div class="btn-group">
-											<a type="button" data-toggle="popover" data-placement="top"
-												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
+										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
+												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
+											<a type="button"  class="btn btn-primary"
 												th:href="@{/empreendedores/{id} (id=${empreendedor.id})}">
-												<i class="bi bi-eye"></i>
+												<i class="bi bi-info-circle "></i>
 											</a>
-				
-											<a type="button" data-toggle="popover"
-												data-placement="top" data-content="Editar" data-trigger="hover"
-												class="btn btn-warning"
+											<a type="button" class="btn btn-warning"
 												th:href="@{/empreendedores/editar/{id} (id=${empreendedor.id})}">
 												<i class="bi bi-pencil-square"></i>
 											</a>
-											<a type="button" data-toggle="popover"
-												data-placement="top" data-content="Remover" data-trigger="hover"
-												class="btn btn-danger"
+											<a type="button" class="btn btn-danger"
 												th:href="@{/empreendedores/excluir/{id} (id=${empreendedor.id})}"
 												onclick="return confirm('Tem certeza que deseja excluir?');">
 												<i class="bi bi-trash3"></i>

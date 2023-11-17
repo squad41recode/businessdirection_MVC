@@ -3,7 +3,7 @@
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 
 <head>
-	<title>Mentores</title>
+	<title>Listagem Mentor</title>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
 											<a type="button" data-placement="top"
 												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"
 												th:href="@{/mentores/{id} (id=${mentor.id})}">
-												<i class="bi bi-eye"></i>
+												<i class="bi bi-info-circle"></i>
 											</a>
 											<a type="button" data-placement="top"
 												data-content="Editar" data-trigger="hover" class="btn btn-warning"

@@ -18,6 +18,7 @@ public class EmpreendedorController {
 
 	@Autowired
 	private EmpreendedorRepository empreendedorRepository;
+	/* private ; */
 
 	@GetMapping
 	public ModelAndView home() {
