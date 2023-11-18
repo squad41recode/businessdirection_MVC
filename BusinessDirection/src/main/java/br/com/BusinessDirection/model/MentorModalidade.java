@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -19,7 +18,7 @@ public class MentorModalidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idMentorModalidade;
 	
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name = "fk_Mentor_id")
 	private Mentor idmentor;
 	
