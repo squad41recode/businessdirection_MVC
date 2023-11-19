@@ -7,8 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,63 +16,63 @@ public class MentorModalidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idMentorModalidade;
-	
-	@OneToMany
+	private Long id;
+
+	@ManyToOne
 	@JoinColumn(name = "fk_Mentor_id")
-	private Mentor idmentor;
-	
-	@OneToOne
+	private Mentor mentor;
+
+	@ManyToOne
 	@JoinColumn(name = "fk_ModalidadeMentoria_id")
-	private ModalidadeMentoria idmodalidadeMentoria;
-	
+	private ModalidadeMentoria modalidadeMentoria;
+
 	private String diaSemana;
-	
+
 	private String horario;
-	
-	
 
-	public MentorModalidade(Long idMentorModalidade, Mentor idmentor, ModalidadeMentoria idmodalidadeMentoria,
-			String diaSemana, String horario) {
-		super();
-		this.idMentorModalidade = idMentorModalidade;
-		this.idmentor = idmentor;
-		this.idmodalidadeMentoria = idmodalidadeMentoria;
-		this.diaSemana = diaSemana;
-		this.horario = horario;
-	}
-
-	public MentorModalidade(Mentor idmentor, ModalidadeMentoria idmodalidadeMentoria, String diaSemana,
+	public MentorModalidade(Long id, Mentor mentor, ModalidadeMentoria modalidadeMentoria, String diaSemana,
 			String horario) {
 		super();
-		this.idmentor = idmentor;
-		this.idmodalidadeMentoria = idmodalidadeMentoria;
+		this.id = id;
+		this.mentor = mentor;
+		this.modalidadeMentoria = modalidadeMentoria;
 		this.diaSemana = diaSemana;
 		this.horario = horario;
 	}
 
-	public Long getIdMentorModalidade() {
-		return idMentorModalidade;
+	public MentorModalidade(Mentor mentor, ModalidadeMentoria modalidadeMentoria, String diaSemana, String horario) {
+		super();
+		this.mentor = mentor;
+		this.modalidadeMentoria = modalidadeMentoria;
+		this.diaSemana = diaSemana;
+		this.horario = horario;
 	}
 
-	public void setIdMentorModalidade(Long idMentorModalidade) {
-		this.idMentorModalidade = idMentorModalidade;
+	public MentorModalidade() {
 	}
 
-	public Mentor getIdmentor() {
-		return idmentor;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdmentor(Mentor idmentor) {
-		this.idmentor = idmentor;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public ModalidadeMentoria getIdmodalidadeMentoria() {
-		return idmodalidadeMentoria;
+	public Mentor getMentor() {
+		return mentor;
 	}
 
-	public void setIdmodalidadeMentoria(ModalidadeMentoria idmodalidadeMentoria) {
-		this.idmodalidadeMentoria = idmodalidadeMentoria;
+	public void setMentor(Mentor mentor) {
+		this.mentor = mentor;
+	}
+
+	public ModalidadeMentoria getModalidadeMentoria() {
+		return modalidadeMentoria;
+	}
+
+	public void setModalidadeMentoria(ModalidadeMentoria modalidadeMentoria) {
+		this.modalidadeMentoria = modalidadeMentoria;
 	}
 
 	public String getDiaSemana() {
@@ -94,7 +93,7 @@ public class MentorModalidade {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(diaSemana, horario, idMentorModalidade, idmentor, idmodalidadeMentoria);
+		return Objects.hash(diaSemana, horario, id, modalidadeMentoria);
 	}
 
 	@Override
@@ -107,18 +106,14 @@ public class MentorModalidade {
 			return false;
 		MentorModalidade other = (MentorModalidade) obj;
 		return Objects.equals(diaSemana, other.diaSemana) && Objects.equals(horario, other.horario)
-				&& Objects.equals(idMentorModalidade, other.idMentorModalidade)
-				&& Objects.equals(idmentor, other.idmentor)
-				&& Objects.equals(idmodalidadeMentoria, other.idmodalidadeMentoria);
+				&& Objects.equals(id, other.id) && Objects.equals(mentor, other.mentor)
+				&& Objects.equals(modalidadeMentoria, other.modalidadeMentoria);
 	}
 
 	@Override
 	public String toString() {
-		return "MentorModalidade [idMentorModalidade=" + idMentorModalidade + ", idmentor=" + idmentor
-				+ ", idmodalidadeMentoria=" + idmodalidadeMentoria + ", diaSemana=" + diaSemana + ", horario=" + horario
-				+ "]";
+		return "MentorModalidade [id=" + id + ", mentor=" + mentor + ", modalidadeMentoria=" + modalidadeMentoria
+				+ ", diaSemana=" + diaSemana + ", horario=" + horario + "]";
 	}
-	
-	
 
 }

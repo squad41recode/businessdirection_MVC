@@ -1,6 +1,8 @@
 package br.com.BusinessDirection.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,13 +16,15 @@ public class ModalidadeMentoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idModalidadeMentoria;
+	private Long id;
 
-	@OneToOne
+	@OneToOne(mappedBy = "modalidadeMentoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_ConteudoOnline_id")
 	private ConteudoOnline conteudoOnline;
 
 	private String nomeModalidade;
+
+//	talvez criar um metodo que calcula a qtd e passa o valor pra ca
 	private int qtdMentores;
 	private int qtdEmpreendedores;
 
@@ -28,22 +32,22 @@ public class ModalidadeMentoria {
 		super();
 	}
 
-	public ModalidadeMentoria(Long idModalidadeMentoria, ConteudoOnline conteudoOnline, String nomeModalidade,
-			int qtdMentores, int qtdEmpreendedores) {
+	public ModalidadeMentoria(Long id, ConteudoOnline conteudoOnline, String nomeModalidade, int qtdMentores,
+			int qtdEmpreendedores) {
 		super();
-		this.idModalidadeMentoria = idModalidadeMentoria;
+		this.id = id;
 		this.conteudoOnline = conteudoOnline;
 		this.nomeModalidade = nomeModalidade;
 		this.qtdMentores = qtdMentores;
 		this.qtdEmpreendedores = qtdEmpreendedores;
 	}
 
-	public Long getIdModalidadeMentoria() {
-		return idModalidadeMentoria;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdModalidadeMentoria(Long idModalidadeMentoria) {
-		this.idModalidadeMentoria = idModalidadeMentoria;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public ConteudoOnline getConteudoOnline() {
@@ -80,9 +84,8 @@ public class ModalidadeMentoria {
 
 	@Override
 	public String toString() {
-		return "ModalidadeMentoria [idModalidadeMentoria=" + idModalidadeMentoria + ", conteudoOnline=" + conteudoOnline
-				+ ", nomeModalidade=" + nomeModalidade + ", qtdMentores=" + qtdMentores + ", qtdEmpreendedores="
-				+ qtdEmpreendedores + "]";
+		return "ModalidadeMentoria [id=" + id + ", conteudoOnline=" + conteudoOnline + ", nomeModalidade="
+				+ nomeModalidade + ", qtdMentores=" + qtdMentores + ", qtdEmpreendedores=" + qtdEmpreendedores + "]";
 	}
 
 }

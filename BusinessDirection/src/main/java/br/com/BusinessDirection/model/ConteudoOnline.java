@@ -1,6 +1,7 @@
 package br.com.BusinessDirection.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,9 +15,9 @@ public class ConteudoOnline {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idConteudoOnline;
+	private Long id;
 
-	@OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_ModalidadeMentoria_id")
 	private ModalidadeMentoria modalidadeMentoria;
 
@@ -26,19 +27,19 @@ public class ConteudoOnline {
 		super();
 	}
 
-	public ConteudoOnline(Long idConteudoOnline, ModalidadeMentoria modalidadeMentoria, String conteudo) {
+	public ConteudoOnline(Long id, ModalidadeMentoria modalidadeMentoria, String conteudo) {
 		super();
-		this.idConteudoOnline = idConteudoOnline;
+		this.id = id;
 		this.modalidadeMentoria = modalidadeMentoria;
 		this.conteudo = conteudo;
 	}
 
-	public Long getIdConteudoOnline() {
-		return idConteudoOnline;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdConteudoOnline(Long idConteudoOnline) {
-		this.idConteudoOnline = idConteudoOnline;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public ModalidadeMentoria getModalidadeMentoria() {

@@ -1,0 +1,80 @@
+package br.com.BusinessDirection.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import br.com.BusinessDirection.model.MentorModalidade;
+import br.com.BusinessDirection.repository.MentorModalidadeRepository;
+import br.com.BusinessDirection.repository.MentorRepository;
+import br.com.BusinessDirection.repository.ModalidadeMentoriaRepository;
+
+@Controller
+@RequestMapping("/mentorias")
+public class MentorModalidadeController {
+
+	@Autowired
+	private MentorModalidadeRepository mentorModalidadeRepository;
+	
+	@Autowired
+	private MentorRepository mentorRepository;
+	
+	@Autowired
+	private ModalidadeMentoriaRepository modalidadeMentoriaRepository;
+
+	@GetMapping
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/index");
+		modelAndView.addObject("MentorModalidades", mentorModalidadeRepository.findAll());
+
+		return modelAndView;
+	}
+
+	// TERMINAR TODOS OS RELACIOMENTOS DA CLASSE MENTOR
+	@GetMapping("/{id}")
+	public ModelAndView detalhes(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/detalhes");
+		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.getReferenceById(id));
+
+		return modelAndView;
+	}
+
+	@GetMapping("/cadastrar")
+	public ModelAndView cadastrar() {
+		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/formulario");
+		modelAndView.addObject("mentorModalidade", new MentorModalidade());
+		modelAndView.addObject("mentores", mentorRepository.findAll());
+		modelAndView.addObject("modalidades", modalidadeMentoriaRepository.findAll());
+
+		return modelAndView;
+	}
+
+	@GetMapping("/editar/{id}")
+	public ModelAndView editar(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/formulario");
+		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.getReferenceById(id));
+		modelAndView.addObject("mentores", mentorRepository.findAll());
+		modelAndView.addObject("modalidades", modalidadeMentoriaRepository.findAll());
+		
+		
+		return modelAndView;
+	}
+
+	@PostMapping({ "/cadastrar", "/editar/{id}" })
+	public String salvar(MentorModalidade mentorModalidade) {
+		mentorModalidadeRepository.save(mentorModalidade);
+
+		return "redirect:/mentorias";
+	}
+
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable Long id) {
+		mentorModalidadeRepository.deleteById(id);
+
+		return "redirect:/mentorias";
+	}
+}

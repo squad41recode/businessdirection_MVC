@@ -12,7 +12,7 @@
 		</nav>-->
 
 		<h1 class=" " th:include="${title}">Titulo do main</h1>
-		<ul class="nav justify-content-center p-0">
+		<ul class="nav nav-tabs justify-content-center p-0">
 			<li class="nav-item">
 				<a th:href="@{/empreendedores}" class="nav-link">
 					Empreendedor
@@ -21,6 +21,16 @@
 			<li class="nav-item">
 				<a th:href="@{/mentores}" class="nav-link">
 					Mentor
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/mentorias}" class="nav-link">
+					Mentorias
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/conteudos-online}" class="nav-link">
+					Conteúdo Online
 				</a>
 			</li>
 		</ul>
