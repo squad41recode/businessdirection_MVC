@@ -14,7 +14,7 @@ import br.com.BusinessDirection.repository.MentorRepository;
 import br.com.BusinessDirection.repository.ModalidadeMentoriaRepository;
 
 @Controller
-@RequestMapping("/mentorias")
+@RequestMapping("/mentorias-disponiveis")
 public class MentorModalidadeController {
 
 	@Autowired
@@ -34,7 +34,6 @@ public class MentorModalidadeController {
 		return modelAndView;
 	}
 
-	// TERMINAR TODOS OS RELACIOMENTOS DA CLASSE MENTOR
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/detalhes");
@@ -60,7 +59,6 @@ public class MentorModalidadeController {
 		modelAndView.addObject("mentores", mentorRepository.findAll());
 		modelAndView.addObject("modalidades", modalidadeMentoriaRepository.findAll());
 		
-		
 		return modelAndView;
 	}
 
@@ -68,13 +66,13 @@ public class MentorModalidadeController {
 	public String salvar(MentorModalidade mentorModalidade) {
 		mentorModalidadeRepository.save(mentorModalidade);
 
-		return "redirect:/mentorias";
+		return "redirect:/mentorias-disponiveis";
 	}
 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
 		mentorModalidadeRepository.deleteById(id);
 
-		return "redirect:/mentorias";
+		return "redirect:/mentorias-disponiveis";
 	}
 }

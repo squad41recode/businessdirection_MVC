@@ -26,7 +26,6 @@ public class ModalidadeMentoriaController {
 		return modelAndView;
 	}
 
-	//TERMINAR TODOS OS RELACIOMENTOS DA CLASSE MENTOR
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudModalidadeMentoria/detalhes");

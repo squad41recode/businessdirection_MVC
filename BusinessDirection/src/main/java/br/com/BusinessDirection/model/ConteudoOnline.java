@@ -18,7 +18,7 @@ public class ConteudoOnline {
 	private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_ModalidadeMentoria_id")
+	@JoinColumn(name = "fk_ModalidadeMentoria_id", nullable = false)
 	private ModalidadeMentoria modalidadeMentoria;
 
 	private String conteudo;

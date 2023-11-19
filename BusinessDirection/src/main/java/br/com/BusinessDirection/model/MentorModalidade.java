@@ -2,7 +2,9 @@ package br.com.BusinessDirection.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,12 +20,12 @@ public class MentorModalidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_Mentor_id")
 	private Mentor mentor;
 
-	@ManyToOne
-	@JoinColumn(name = "fk_ModalidadeMentoria_id")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_ModalidadeMentoria_id", nullable = false)
 	private ModalidadeMentoria modalidadeMentoria;
 
 	private String diaSemana;
@@ -91,24 +93,18 @@ public class MentorModalidade {
 		this.horario = horario;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(diaSemana, horario, id, modalidadeMentoria);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MentorModalidade other = (MentorModalidade) obj;
-		return Objects.equals(diaSemana, other.diaSemana) && Objects.equals(horario, other.horario)
-				&& Objects.equals(id, other.id) && Objects.equals(mentor, other.mentor)
-				&& Objects.equals(modalidadeMentoria, other.modalidadeMentoria);
-	}
+	/*
+	 * @Override public int hashCode() { return Objects.hash(diaSemana, horario, id,
+	 * modalidadeMentoria); }
+	 * 
+	 * @Override public boolean equals(Object obj) { if (this == obj) return true;
+	 * if (obj == null) return false; if (getClass() != obj.getClass()) return
+	 * false; MentorModalidade other = (MentorModalidade) obj; return
+	 * Objects.equals(diaSemana, other.diaSemana) && Objects.equals(horario,
+	 * other.horario) && Objects.equals(id, other.id) && Objects.equals(mentor,
+	 * other.mentor) && Objects.equals(modalidadeMentoria,
+	 * other.modalidadeMentoria); }
+	 */
 
 	@Override
 	public String toString() {

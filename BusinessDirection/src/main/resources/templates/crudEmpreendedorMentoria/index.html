@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				
-				<a th:href="@{/mentorias-disponiveis/cadastrar}" class="btn btn-primary my-1">Nova mentoria</a>
+				<a th:href="@{/mentorias-adquiridas/cadastrar}" class="btn btn-primary my-1">Nova mentoria</a>
 				
 				<div class="card">
 					
@@ -17,33 +17,29 @@
 						<table class="table table-hover text-nowrap">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>Modalidade da mentoria</th>
-									<th>Dia da Semana</th>
-									<th>Horario</th>
-									<th>Nome Mentor</th>
+									<th>Id Mentoria Adquirida</th>
+									<th>Id da Mentoria Disponível</th>
+									<th>Nome do empreendedor</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="mentoriaDisp : ${MentorModalidades}">
-									<td th:text="${mentoriaDisp.id}">000</td>
-									<td th:text="${mentoriaDisp.modalidadeMentoria.nome}">Exemplo nome modalidade</td>
-									<td th:text="${mentoriaDisp.diaSemana}">Dia</td>
-									<td th:text="${mentoriaDisp.horario}">Horario</td>
-									<td th:text="${mentoriaDisp.mentor.nome}">nome mentor</td>
+								<tr th:each="mentoriaAdq : ${EmpreendedorMentorias}">
+									<td th:text="${mentoriaAdq.id}">000</td>
+									<td th:text="${mentoriaAdq.mentorModalidade.id}">Id da Mentoria Disponível</td>
+									<td th:text="${mentoriaAdq.empreendedor.nome}">Nome do empreendedor</td>
 									<td>
 										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
 												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
 											<a type="button"  class="btn btn-primary"
-												th:href="@{/mentorias-disponiveis/{id} (id=${mentoriaDisp.id})}">
+												th:href="@{/mentorias-adquiridas/{id} (id=${mentoriaAdq.id})}">
 												<i class="bi bi-info-circle "></i>
 											</a>
 											<a type="button" class="btn btn-warning"
-												th:href="@{/mentorias-disponiveis/editar/{id} (id=${mentoriaDisp.id})}">
+												th:href="@{/mentorias-adquiridas/editar/{id} (id=${mentoriaAdq.id})}">
 												<i class="bi bi-pencil-square"></i>
 											</a>
 											<a type="button" class="btn btn-danger"
-												th:href="@{/mentorias-disponiveis/excluir/{id} (id=${mentoriaDisp.id})}"
+												th:href="@{/mentorias-adquiridas/excluir/{id} (id=${mentoriaAdq.id})}"
 												onclick="return confirm('Tem certeza que deseja excluir?');">
 												<i class="bi bi-trash3"></i>
 											</a>

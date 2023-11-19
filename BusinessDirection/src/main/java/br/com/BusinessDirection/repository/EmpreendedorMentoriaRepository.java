@@ -9,6 +9,6 @@ import br.com.BusinessDirection.model.EmpreendedorMentoria;
 
 public interface EmpreendedorMentoriaRepository extends JpaRepository<EmpreendedorMentoria, Long>{
    
-	@EntityGraph(attributePaths = {" "})
+    @EntityGraph(attributePaths = {"mentorModalidade","empreendedor"})
     List<EmpreendedorMentoria> findAll();
 }

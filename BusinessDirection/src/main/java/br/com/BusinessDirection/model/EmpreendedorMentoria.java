@@ -19,9 +19,9 @@ public class EmpreendedorMentoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long empreendedorMentoria;
+	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_MentorModalidade_id")
 	private MentorModalidade mentorModalidade;
 
@@ -33,43 +33,43 @@ public class EmpreendedorMentoria {
 	private int encontrosFeitos;
 	private int faltas;
 
-	public Long getempreendedorMentoria() {
-		return empreendedorMentoria;
+	public Long getId() {
+		return id;
 	}
 
-	public void setempreendedorMentoria(Long empreendedorMentoria) {
-		this.empreendedorMentoria = empreendedorMentoria;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public MentorModalidade getmentormodalidade() {
+	public MentorModalidade getMentorModalidade() {
 		return mentorModalidade;
 	}
 
-	public void setmentormodalidade(MentorModalidade mentorModalidade) {
+	public void setMentorModalidade(MentorModalidade mentorModalidade) {
 		this.mentorModalidade = mentorModalidade;
 	}
 
-	public Empreendedor getempreendedor() {
+	public Empreendedor getEmpreendedor() {
 		return empreendedor;
 	}
 
-	public void setempreendedor(Empreendedor empreendedor) {
+	public void setEmpreendedor(Empreendedor empreendedor) {
 		this.empreendedor = empreendedor;
 	}
 
-	public String getStatua() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatua(String status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public int getEncontros_feitos() {
+	public int getEncontrosFeitos() {
 		return encontrosFeitos;
 	}
 
-	public void setEncontros_feitos(int encontrosFeitos) {
+	public void setEncontrosFeitos(int encontrosFeitos) {
 		this.encontrosFeitos = encontrosFeitos;
 	}
 
@@ -83,7 +83,7 @@ public class EmpreendedorMentoria {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(encontrosFeitos, faltas, empreendedor, empreendedorMentoria, mentorModalidade, status);
+		return Objects.hash(encontrosFeitos, faltas, empreendedor, id, mentorModalidade, status);
 	}
 
 	@Override
@@ -97,21 +97,21 @@ public class EmpreendedorMentoria {
 		EmpreendedorMentoria other = (EmpreendedorMentoria) obj;
 		return encontrosFeitos == other.encontrosFeitos && faltas == other.faltas
 				&& Objects.equals(empreendedor, other.empreendedor)
-				&& Objects.equals(empreendedorMentoria, other.empreendedorMentoria)
+				&& Objects.equals(id, other.id)
 				&& Objects.equals(mentorModalidade, other.mentorModalidade) && Objects.equals(status, other.status);
 	}
 
 	@Override
 	public String toString() {
-		return "EmpreendedorMentoria [empreendedorMentoria=" + empreendedorMentoria + ", mentorModalidade="
+		return "EmpreendedorMentoria [id=" + id + ", mentorModalidade="
 				+ mentorModalidade + ", empreendedor=" + empreendedor + ", status=" + status + ", encontrosFeitos="
 				+ encontrosFeitos + ", faltas=" + faltas + "]";
 	}
 
-	public EmpreendedorMentoria(Long empreendedorMentoria, MentorModalidade mentorModalidade, Empreendedor empreendedor,
+	public EmpreendedorMentoria(Long id, MentorModalidade mentorModalidade, Empreendedor empreendedor,
 			String status, int encontrosFeitos, int faltas) {
 		super();
-		this.empreendedorMentoria = empreendedorMentoria;
+		this.id = id;
 		this.mentorModalidade = mentorModalidade;
 		this.empreendedor = empreendedor;
 		this.status = status;
@@ -127,6 +127,9 @@ public class EmpreendedorMentoria {
 		this.status = status;
 		this.encontrosFeitos = encontrosFeitos;
 		this.faltas = faltas;
+	}
+
+	public EmpreendedorMentoria() {
 	}
 
 }
