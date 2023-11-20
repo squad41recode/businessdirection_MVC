@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+<head>
+	<title>Listagem Empreendedor</title>
+</head>
+<body>
+	<main>
+		<div class="row">
+			<div class="col-sm-12">
+				
+				<a th:href="@{/empreendedores/cadastrar}" class="btn btn-primary my-1">Novo Empreendedor</a>
+				
+				<div class="card">
+					
+					<div class="card-body table-responsive p-0">
+						<table class="table table-hover text-nowrap">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>E-mail</th>
+									<th>Telefone</th>
+									<th>Cidade</th>
+									<th>Estado</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="empreendedor : ${Empreendedores}">
+									<td th:text="${empreendedor.id}">183</td>
+									<td>
+										<span th:text="${empreendedor.nome}">Maria</span>
+										<span th:text="${empreendedor.sobrenome}">Silva</span>
+									</td>
+									<td th:text="${empreendedor.email}">maria@email.com</td>
+									<td th:text="${empreendedor.telefone}">(99) 99999-0000</td>
+									<td th:text="${empreendedor.cidade}">Rio de Janeiro</td>
+									<td th:text="${empreendedor.estado}">RJ</td>
+									<td>
+										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
+												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
+											<a type="button"  class="btn btn-primary"
+												th:href="@{/empreendedores/{id} (id=${empreendedor.id})}">
+												<i class="bi bi-info-circle "></i>
+											</a>
+											<a type="button" class="btn btn-warning"
+												th:href="@{/empreendedores/editar/{id} (id=${empreendedor.id})}">
+												<i class="bi bi-pencil-square"></i>
+											</a>
+											<a type="button" class="btn btn-danger"
+												th:href="@{/empreendedores/excluir/{id} (id=${empreendedor.id})}"
+												onclick="return confirm('Tem certeza que deseja excluir?');">
+												<i class="bi bi-trash3"></i>
+											</a>
+										</div>
+									<td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

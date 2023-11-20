@@ -37,22 +37,22 @@
                 <ul class="navbar-nav justify-content-md-center align-items-md-center flex-grow-1">
                 <!-- navbar links -->
                     <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                      <a class="nav-link" aria-current="page" th:href="@{/home}">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../pages/ferramentas.html">Ferramentas</a>
+                      <a class="nav-link" th:href="@{/ferramentas}">Ferramentas</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../pages/sobre.html">Sobre Nós</a>
+                      <a class="nav-link" th:href="@{/sobre}">Sobre Nós</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../pages/contato.html">Contato</a>
+                      <a class="nav-link" th:href="@{/contato}">Contato</a>
                     </li>
                 </ul>
                 <!-- btn entrar -->
                 <div class=" my-2 my-md-0">
                   <p>Já tem uma conta?</p> 
-                  <a href="../pages/entrar.html" class="btn btn-primary">Entrar<a>
+                  <a th:href="@{/entrar}" class="btn btn-primary">Entrar<a>
                 </div>
               </div>
             </div>
@@ -122,16 +122,16 @@
           <h5>Links</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="../index.html" class="nav-link p-0 text-body-secondary">Home</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="../pages/ferramentas.html" class="nav-link p-0 text-body-secondary">Ferramentas</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="../pages/sobre.html" class="nav-link p-0 text-body-secondary">Sobre Nós</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="../pages/contato.html" class="nav-link p-0 text-body-secondary">Contato</a>
+						<a th:href="@{/home}" class="nav-link p-0 text-body-secondary">Home</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a th:href="@{/ferramentas}" class="nav-link p-0 text-body-secondary">Ferramentas</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a th:href="@{/sobre}" class="nav-link p-0 text-body-secondary">Sobre Nós</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a th:href="@{/contato}" class="nav-link p-0 text-body-secondary">Contato</a>
             </li>
             <li class="nav-item mb-2">
               <a href="#" class="nav-link p-0 text-body-secondary">Política de Privacidade</a>
