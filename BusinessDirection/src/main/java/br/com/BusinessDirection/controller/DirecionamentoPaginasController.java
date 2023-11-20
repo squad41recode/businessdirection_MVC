@@ -22,6 +22,14 @@ public class DirecionamentoPaginasController {
 		return modelAndView;
 	}
 	
+
+	@GetMapping("/admin")
+	public ModelAndView admin() {
+		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/index");
+
+		return modelAndView;
+	}
+	
 	@GetMapping("/sobre")
 	public ModelAndView sobre() {
 		ModelAndView modelAndView = new ModelAndView("/pages/sobre.html");
