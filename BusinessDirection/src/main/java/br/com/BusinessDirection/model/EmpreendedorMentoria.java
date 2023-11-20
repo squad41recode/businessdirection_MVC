@@ -9,8 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +19,7 @@ public class EmpreendedorMentoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -71,6 +72,7 @@ public class EmpreendedorMentoria {
 
 	public void setEncontrosFeitos(int encontrosFeitos) {
 		this.encontrosFeitos = encontrosFeitos;
+
 	}
 
 	public int getFaltas() {
@@ -83,7 +85,9 @@ public class EmpreendedorMentoria {
 
 	@Override
 	public int hashCode() {
+
 		return Objects.hash(encontrosFeitos, faltas, empreendedor, id, mentorModalidade, status);
+
 	}
 
 	@Override
@@ -95,14 +99,17 @@ public class EmpreendedorMentoria {
 		if (getClass() != obj.getClass())
 			return false;
 		EmpreendedorMentoria other = (EmpreendedorMentoria) obj;
+
 		return encontrosFeitos == other.encontrosFeitos && faltas == other.faltas
 				&& Objects.equals(empreendedor, other.empreendedor)
 				&& Objects.equals(id, other.id)
 				&& Objects.equals(mentorModalidade, other.mentorModalidade) && Objects.equals(status, other.status);
+
 	}
 
 	@Override
 	public String toString() {
+
 		return "EmpreendedorMentoria [id=" + id + ", mentorModalidade="
 				+ mentorModalidade + ", empreendedor=" + empreendedor + ", status=" + status + ", encontrosFeitos="
 				+ encontrosFeitos + ", faltas=" + faltas + "]";
@@ -123,3 +130,4 @@ public class EmpreendedorMentoria {
 	}
 
 }
+

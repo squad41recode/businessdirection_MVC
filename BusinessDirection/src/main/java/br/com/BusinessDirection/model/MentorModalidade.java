@@ -7,7 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,9 +18,11 @@ public class MentorModalidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
 	@JoinColumn(name = "fk_Mentor_id")
 	private Mentor mentor;
 
@@ -90,19 +94,6 @@ public class MentorModalidade {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-
-	/*
-	 * @Override public int hashCode() { return Objects.hash(diaSemana, horario, id,
-	 * modalidadeMentoria); }
-	 * 
-	 * @Override public boolean equals(Object obj) { if (this == obj) return true;
-	 * if (obj == null) return false; if (getClass() != obj.getClass()) return
-	 * false; MentorModalidade other = (MentorModalidade) obj; return
-	 * Objects.equals(diaSemana, other.diaSemana) && Objects.equals(horario,
-	 * other.horario) && Objects.equals(id, other.id) && Objects.equals(mentor,
-	 * other.mentor) && Objects.equals(modalidadeMentoria,
-	 * other.modalidadeMentoria); }
-	 */
 
 	@Override
 	public String toString() {
