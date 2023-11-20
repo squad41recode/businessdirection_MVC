@@ -24,30 +24,31 @@
 				</div>
 				<!--offcanvas body-->
 				<div class="offcanvas-body">
-					<ul class="navbar-nav justify-content-md-center align-items-md-center flex-grow-1">
-						<!-- navbar links -->
-						<li class="nav-item">
-							<a class="nav-link " href="index.html">Home</a>
+						<ul class="navbar-nav justify-content-md-center align-items-md-center flex-grow-1">
+							<!-- navbar links -->
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/home}">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/ferramentas}">Ferramentas</a>
+							</li>
+							<li class="nav-item">
+							<a class="nav-link  active" aria-current="page" th:href="@{/empreendedores}">Admin</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./pages/ferramentas.html">Ferramentas</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" th:href="@{/}">Admin</a>
-						</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/sobre}">Sobre Nós</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/contato}">Contato</a>
+							</li>
+						</ul>
+						<!-- btn entrar -->
+						<div class="btn-cad-ent my-3 my-md-0">
+							<a th:href="@{/entrar}" class="btn btn-light">Entrar</a>
 
-						<li class="nav-item">
-							<a class="nav-link" href="./pages/sobre.html">Sobre Nós</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./pages/contato.html">Contato</a>
-						</li>
-					</ul>
-					<!-- btn entrar -->
-					<div class="btn-cad-ent my-3 my-md-0">
-						<a href="./pages/entrar.html" class="btn btn-light">Entrar</a>
-						<a href="./pages/cadastrar.html" class="btn btn-primary">Cadastrar</a>
-					</div>
+							<a th:href="@{/cadastrar}" class="btn btn-primary">Cadastrar</a>
+
+						</div>
 				</div>
 			</div>
 		</div>
