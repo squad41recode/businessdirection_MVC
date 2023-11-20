@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Detalhes Empreendedor</title>
+</head>
+
+<body>
+	<main class="pg-detalhes">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-3">
+
+						<!-- Detalhes  -->
+						<div class="card card-primary card-outline">
+							<div class="card-body box-profile">
+								<div class="text-center">
+									<img th:src="@{/img/default-profile-picture.png}"
+										class="profile-user-img img-fluid img-circle" id="profile-user-img"
+										alt="User profile picture">
+								</div>
+
+								<h3 class="profile-username text-center" th:text="${empreendedor.nome}">Maria Silva</h3>
+							</div>
+
+						</div>
+
+						<div class="card card-primary">
+							<div class="">
+								<h3 class="card-title">Dados Pessoais</h3>
+							</div>
+							<!-- card header -->
+							<div class="card-body">
+								<strong><i class="fas fa-mobile mr-1"></i> Telefone</strong>
+								<p class="text-muted" th:text="${empreendedor.telefone}">(99) 99999-0000</p>
+
+								<hr>
+
+								<strong><i class="fas fa-envelope mr-1"></i> E-mail</strong>
+								<p class="text-muted" id="email" th:text="${empreendedor.email}">maria@email.com</p>
+
+								<hr>
+
+								<strong><i class="fas fa-calendar-alt mr-1"></i> Data de Nascimento</strong>
+								<p class="text-muted" th:field="${empreendedor.dataNascimento}">
+									30 de maio de 1981
+								</p>
+
+								<hr>
+
+								<strong><i class="fas fa-map-marker-alt mr-1"></i> Endereço</strong>
+								<p class="text-muted">CEP: <span th:text="${empreendedor.CEP}"></span></p>
+								<p class="text-muted">Bairro: <span th:text="${empreendedor.bairro}"></span></p>
+								<p class="text-muted">Cidade: <span th:text="${empreendedor.cidade}"></span> - <span
+										th:text="${empreendedor.estado}"></span></p>
+
+								<hr>
+
+								<strong><i class="fas fa-calendar-alt mr-1"></i> Nome da Empresa</strong>
+								<p class="text-muted" th:field="${empreendedor.nomeEmpresa}">
+									Exemplo nome da empresa
+								</p>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-9">
+						<div class="card">
+							<div class=" ">
+								<h5 class="card-title">Mentorias</h5>
+							</div>
+							<div class="card-body">
+								<!-- The timeline -->
+								<div class="timeline">
+									<!-- timeline item -->
+									<!--<div th:each="mentoria : ${empreendedor.mentorias}">
+                    <i class="fas fa-project-diagram bg-primary"></i>
+
+                    <div class="timeline-item">
+                      <span class="time">
+                        <i class="far fa-clock"></i>
+                      </span>
+
+                      <h3 class="timeline-header" th:text="${mentoria.nome}"></h3>
+
+                      <div class="timeline-body" th:text="${mentoria.descricao}">
+                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                        quora plaxo ideeli hulu weebly balihoo...
+                      </div>
+                     <div class="timeline-footer">
+                        <a th:href="@{/mentorias/{id} (id=${mentoria.id})}" class="btn btn-primary btn-sm">Detalhes</a>
+                      </div>
+                    </div>
+                  </div>-->
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class=" ">
+								<h5 class="card-title">Conteúdo Online</h5>
+							</div>
+							<div class="card-body">
+								<!-- The timeline -->
+								<div class="timeline">
+									<!-- timeline item -->
+									<!--<div th:each="mentoria : ${empreendedor.mentorias}">
+                    <i class="fas fa-project-diagram bg-primary"></i>
+
+                    <div class="timeline-item">
+                      <span class="time">
+                        <i class="far fa-clock"></i>
+                      </span>
+
+                      <h3 class="timeline-header" th:text="${mentoria.nome}"></h3>
+
+                      <div class="timeline-body" th:text="${mentoria.descricao}">
+                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                        quora plaxo ideeli hulu weebly balihoo...
+                      </div>
+                     <div class="timeline-footer">
+                        <a th:href="@{/mentorias/{id} (id=${mentoria.id})}" class="btn btn-primary btn-sm">Detalhes</a>
+                      </div>
+                    </div>
+                  </div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

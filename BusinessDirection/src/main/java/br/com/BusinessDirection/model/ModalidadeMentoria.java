@@ -1,10 +1,11 @@
 package br.com.BusinessDirection.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -14,44 +15,34 @@ public class ModalidadeMentoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idModalidadeMentoria;
-
-	@OneToOne
-	@JoinColumn(name = "fk_ConteudoOnline_id")
-	private ConteudoOnline conteudoOnline;
+	private Long id;
 
 	private String nomeModalidade;
-	private int qtdMentores;
-	private int qtdEmpreendedores;
+
+	@OneToOne(mappedBy = "modalidadeMentoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private ConteudoOnline conteudoOnline;
+
+//	talvez criar um metodo que calcula a qtd e passa o valor pra ca
+	/*
+	 * private int qtdMentores; private int qtdEmpreendedores;
+	 */
 
 	public ModalidadeMentoria() {
 		super();
 	}
 
-	public ModalidadeMentoria(Long idModalidadeMentoria, ConteudoOnline conteudoOnline, String nomeModalidade,
-			int qtdMentores, int qtdEmpreendedores) {
+	public ModalidadeMentoria(Long id, String nomeModalidade) {
 		super();
-		this.idModalidadeMentoria = idModalidadeMentoria;
-		this.conteudoOnline = conteudoOnline;
+		this.id = id;
 		this.nomeModalidade = nomeModalidade;
-		this.qtdMentores = qtdMentores;
-		this.qtdEmpreendedores = qtdEmpreendedores;
 	}
 
-	public Long getIdModalidadeMentoria() {
-		return idModalidadeMentoria;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdModalidadeMentoria(Long idModalidadeMentoria) {
-		this.idModalidadeMentoria = idModalidadeMentoria;
-	}
-
-	public ConteudoOnline getConteudoOnline() {
-		return conteudoOnline;
-	}
-
-	public void setConteudoOnline(ConteudoOnline conteudoOnline) {
-		this.conteudoOnline = conteudoOnline;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNomeModalidade() {
@@ -60,29 +51,6 @@ public class ModalidadeMentoria {
 
 	public void setNomeModalidade(String nomeModalidade) {
 		this.nomeModalidade = nomeModalidade;
-	}
-
-	public int getQtdMentores() {
-		return qtdMentores;
-	}
-
-	public void setQtdMentores(int qtdMentores) {
-		this.qtdMentores = qtdMentores;
-	}
-
-	public int getQtdEmpreendedores() {
-		return qtdEmpreendedores;
-	}
-
-	public void setQtdEmpreendedores(int qtdEmpreendedores) {
-		this.qtdEmpreendedores = qtdEmpreendedores;
-	}
-
-	@Override
-	public String toString() {
-		return "ModalidadeMentoria [idModalidadeMentoria=" + idModalidadeMentoria + ", conteudoOnline=" + conteudoOnline
-				+ ", nomeModalidade=" + nomeModalidade + ", qtdMentores=" + qtdMentores + ", qtdEmpreendedores="
-				+ qtdEmpreendedores + "]";
 	}
 
 }

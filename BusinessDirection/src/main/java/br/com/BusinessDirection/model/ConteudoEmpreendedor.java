@@ -16,14 +16,14 @@ public class ConteudoEmpreendedor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idConteudoEmpreendedor;
+	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ConteudoOnline_id")//, nullable = false
+	@JoinColumn(name = "fk_ConteudoOnline_id", nullable = false)
 	private ConteudoOnline conteudoOnline;
  
 	@ManyToOne
-	@JoinColumn(name = "fk_empreendedor_id")//, nullable = false
+	@JoinColumn(name = "fk_empreendedor_id", nullable = false)
 	private Empreendedor empreendedor;
 
 	private String status;
@@ -34,10 +34,10 @@ public class ConteudoEmpreendedor {
 		super();
 	}
 
-	public ConteudoEmpreendedor(Long idConteudoEmpreendedor, ConteudoOnline conteudoOnline, Empreendedor empreendedor,
-			String status, Date dataInicio, Date dataFim) {
+	public ConteudoEmpreendedor(Long id, ConteudoOnline conteudoOnline, Empreendedor empreendedor, String status,
+			Date dataInicio, Date dataFim) {
 		super();
-		this.idConteudoEmpreendedor = idConteudoEmpreendedor;
+		this.id = id;
 		this.conteudoOnline = conteudoOnline;
 		this.empreendedor = empreendedor;
 		this.status = status;
@@ -45,12 +45,12 @@ public class ConteudoEmpreendedor {
 		this.dataFim = dataFim;
 	}
 
-	public Long getIdConteudoEmpreendedor() {
-		return idConteudoEmpreendedor;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdConteudoEmpreendedor(Long idConteudoEmpreendedor) {
-		this.idConteudoEmpreendedor = idConteudoEmpreendedor;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public ConteudoOnline getConteudoOnline() {
@@ -93,11 +93,6 @@ public class ConteudoEmpreendedor {
 		this.dataFim = dataFim;
 	}
 
-	@Override
-	public String toString() {
-		return "ConteudoEmpreendedor [idConteudoEmpreendedor=" + idConteudoEmpreendedor + ", conteudoOnline="
-				+ conteudoOnline + ", empreendedor=" + empreendedor + ", status=" + status + ", dataInicio="
-				+ dataInicio + ", dataFim=" + dataFim + "]";
-	}
+
 
 }

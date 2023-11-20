@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Adquirir Mentoria</title>
+</head>
+
+<body>
+	<main>
+		<!-- form  -->
+		<form method="POST" th:object="${empreendedorMentoria}" class="  container-fluid mx-auto">
+			<div class="  form-crud ">
+				<fieldset>
+					<legend>Dados</legend>
+
+					<input type="hidden" th:field="*{id}">
+
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="mentDispo">Mentoria Disponível</label>
+								<select th:field="*{mentorModalidade}" class="form-select" aria-label="Default select example">
+									<option th:each="mentDispo : ${mentoriasDisponiveis}" th:text="${mentDispo.id}"
+										th:value="${mentDispo.id}">mentoria disponivel</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="empreendedor">Empreendedor</label>
+								<select th:field="*{empreendedor}" class="form-select"
+									aria-label="Default select example">
+									<option th:each="empreendedor : ${empreendedores}" th:text="${empreendedor.getNomeCompleto}"
+										th:value="${empreendedor.id}">empreendedor</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class=" text-center row mt-3">
+					
+					<button type="submit" class="btn btn-primary col mx-auto" onclick="return validarEmpreendedorMentoria()">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</main>
+</body>
+
+</html>

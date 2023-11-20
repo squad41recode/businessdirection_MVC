@@ -12,15 +12,35 @@
 		</nav>-->
 
 		<h1 class=" " th:include="${title}">Titulo do main</h1>
-		<ul class="nav justify-content-center p-0">
+		<ul class="nav nav-tabs justify-content-center p-0">
 			<li class="nav-item">
 				<a th:href="@{/empreendedores}" class="nav-link">
-					Empreendedor
+					Empreendedores
 				</a>
 			</li>
 			<li class="nav-item">
 				<a th:href="@{/mentores}" class="nav-link">
-					Mentor
+					Mentores
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/modalidades-mentorias}" class="nav-link">
+					Modalidades Mentorias
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/mentorias-disponiveis}" class="nav-link">
+					Mentorias
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/mentorias-adquiridas}" class="nav-link">
+					Mentorias Adquiridas
+				</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/conteudos-online}" class="nav-link">
+					Conteúdos Online
 				</a>
 			</li>
 		</ul>

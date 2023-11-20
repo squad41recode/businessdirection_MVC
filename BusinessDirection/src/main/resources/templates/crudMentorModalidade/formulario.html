@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Cadastrar Mentoria Disponivel</title>
+</head>
+
+<body>
+	<main>
+		<!-- form  -->
+		<form method="POST" th:object="${mentorModalidade}" class="  container-fluid mx-auto">
+			<div class="  form-crud ">
+				<fieldset>
+					<legend>Dados Pessoais</legend>
+
+					<input type="hidden" th:field="*{id}">
+
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="mentor">Mentor Responsável</label>
+								<!--<select th:field="*{mentor}" class="form-select" aria-label="Default select example">
+									<option th:each="mentor : ${mentores}" th:text="${mentor.nome}"
+										th:value="${mentor}">mentor</option>
+								</select>-->
+								<select th:field="*{mentor}" class="form-select" aria-label="Default select example">
+									<option th:each="mentor : ${mentores}" th:text="${mentor.nome}"
+										th:value="${mentor.id}">mentor</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="modalidadeMentoria">Modalidade da Mentoria</label>
+								<!--<input type="hidden" th:field="*{mentorModalidade.modalidadeMentoria?.id}" />-->
+								<!--<select th:field="*{modalidadeMentoria}" class="form-select"
+									aria-label="Default select example">
+									<option th:each="modalidade : ${modalidades}" th:text="${modalidade.nomeModalidade}"
+										th:value="${modalidadeMentoria}">modalidade
+									</option>
+								</select>-->
+								<select th:field="*{modalidadeMentoria}" class="form-select"
+									aria-label="Default select example">
+									<option th:each="modalidade : ${modalidades}" th:text="${modalidade.nomeModalidade}"
+										th:value="${modalidade.id}">modalidade
+									</option>
+								</select>
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="diaSemana">Dia da mentoria</label>
+								<select th:field="*{diaSemana}" class="form-select" aria-label="Default select example">
+									<option value="Segunda-feira">Segunda-feira</option>
+									<option value="Terça-feira">Terça-feira</option>
+									<option value="Quarta-feira">Quarta-feira</option>
+									<option value="Quinta-feira">Quinta-feira</option>
+									<option value="Sexta-feira">Sexta-feira</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label for="horario">Horário</label>
+								<input type="time" class="form-control" placeholder="horario" th:field="*{horario}"
+									required>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class=" text-center row mt-3">
+					<button type="submit" class="btn btn-primary col mx-auto">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</main>
+</body>
+
+</html>
