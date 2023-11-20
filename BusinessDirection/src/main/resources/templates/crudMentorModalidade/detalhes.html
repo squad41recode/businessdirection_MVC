@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
+<head>
+	<title>Detalhes Mentorias</title>
+</head>
+
+<body>
+	<main class="pg-detalhes">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<div class="card card-primary ">
+					<div class="">
+						<h3 class="card-title">Dados da Mentoria</h3>
+					</div>
+					<!-- card header -->
+					<div class="card-body">
+						<strong><i class="fas fa-mobile mr-1"></i> Modalidade da Mentoria</strong>
+						<p class="text-muted" th:text="${mentorModalidade.modalidadeMentoria.nomeModalidade}">
+							Exemplo nome da
+							modalidade</p>
+
+						<hr>
+
+						<strong><i class="fas fa-envelope mr-1"></i> Dia da Semana</strong>
+						<p class="text-muted" id="email" th:text="${mentorModalidade.diaSemana}">Segunda-feira
+						</p>
+
+						<hr>
+
+						<strong><i class="fas fa-calendar-alt mr-1"></i> Horário</strong>
+						<p class="text-muted" th:text="${mentorModalidade.horario}">
+							22:22
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<div class="card card-primary ">
+					<div class="">
+						<h3 class="card-title">Dados do Mentor</h3>
+					</div>
+					<!-- card header -->
+					<div class="card-body">
+						<strong><i class="fas fa-mobile mr-1"></i> Nome</strong>
+						<p class="text-muted" th:text="${mentorModalidade.mentor.getNomeCompleto}">Exemplo nome mentor
+						</p>
+
+						<hr>
+
+						<strong><i class="fas fa-envelope mr-1"></i> Tipo de Experiência</strong>
+						<p class="text-muted" th:text="${mentorModalidade.mentor.tipoExperiencia}">exemplo
+							experiencia
+						</p>
+
+						<hr>
+
+						<strong><i class="fas fa-calendar-alt mr-1"></i> WhatsApp</strong>
+						<p class="text-muted" th:text="${mentorModalidade.mentor.whatsapp}">
+							(99) 99999-0000
+						</p>
+						<hr>
+
+						<strong><i class="fas fa-envelope mr-1"></i> E-mail</strong>
+						<p class="text-muted" th:text="${mentorModalidade.mentor.email}">email@email.com
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>
