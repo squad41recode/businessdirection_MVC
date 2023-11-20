@@ -1,7 +1,5 @@
 package br.com.BusinessDirection.model;
 
-import java.util.Objects;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

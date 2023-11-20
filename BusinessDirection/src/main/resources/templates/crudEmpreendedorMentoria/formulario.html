@@ -21,8 +21,8 @@
 							<div class="form-group">
 								<label for="mentDispo">Mentoria Disponível</label>
 								<select th:field="*{mentorModalidade}" class="form-select" aria-label="Default select example">
-									<option th:each="mentDispo : ${mentoriasDisponiveis}" th:text="${mentDispo.nome}"
-										th:value="${mentDispo}">mentoria disponivel</option>
+									<option th:each="mentDispo : ${mentoriasDisponiveis}" th:text="${mentDispo.id}"
+										th:value="${mentDispo.id}">mentoria disponivel</option>
 								</select>
 							</div>
 						</div>
@@ -31,37 +31,16 @@
 								<label for="empreendedor">Empreendedor</label>
 								<select th:field="*{empreendedor}" class="form-select"
 									aria-label="Default select example">
-									<option th:each="empreendedor : ${empreendedores}" th:text="${empreendedor.nome}"
-										th:value="${empreendedor}">modalidade</option>
+									<option th:each="empreendedor : ${empreendedores}" th:text="${empreendedor.getNomeCompleto}"
+										th:value="${empreendedor.id}">empreendedor</option>
 								</select>
 							</div>
 						</div>
-					</div><!--
-					<div class="row">
-						<div class="col-md-6 col-sm-12">
-							<div class="form-group">
-								<label for="estado">Modalidade da Mentoria</label>
-								<select th:field="*{diaSemana}" class="form-select"
-									aria-label="Default select example">
-									<option value="Segunda-feira">Segunda-feira</option>
-									<option value="Terça-feira">Terça-feira</option>
-									<option value="Quarta-feira">Quarta-feira</option>
-									<option value="Quinta-feira">Quinta-feira</option>
-									<option value="Sexta-feira">Sexta-feira</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-12">
-							<div class="form-group">
-								<label for="horario">Horário</label>
-								<input type="time" class="form-control" placeholder="horario" th:field="*{horario}"
-									required>
-							</div>
-						</div>
-					</div>-->
+					</div>
 				</fieldset>
 				<div class=" text-center row mt-3">
-					<button type="submit" class="btn btn-primary col mx-auto">Salvar</button>
+					
+					<button type="submit" class="btn btn-primary col mx-auto" onclick="return validarEmpreendedorMentoria()">Salvar</button>
 				</div>
 			</div>
 

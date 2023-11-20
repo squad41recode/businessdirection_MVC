@@ -3,6 +3,7 @@ package br.com.BusinessDirection.model;
 import java.sql.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -26,24 +27,13 @@ public class Mentor {
 	private String tipoExperiencia;
 	private Date dataNascimento;
 	
-	@OneToMany(mappedBy = "mentor", fetch = FetchType.LAZY )
-	private List<MentorModalidade>  mentorias;
+    public String getNomeCompleto() {
+        return nome + " " + sobrenome;
+    }
 
-	public Mentor() {
-		super();
-	}
+	@OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<MentorModalidade> mentoriasDisponiveis;
 
-	public Mentor(Long id, String nome, String sobrenome, String whatsapp, String email, String tipoExperiencia,
-			Date dataNascimento) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.whatsapp = whatsapp;
-		this.email = email;
-		this.tipoExperiencia = tipoExperiencia;
-		this.dataNascimento = dataNascimento;
-	}
 
 	public Long getId() {
 		return id;
@@ -101,11 +91,19 @@ public class Mentor {
 		this.dataNascimento = dataNascimento;
 	}
 
+	public List<MentorModalidade> getMentoriasDisponiveis() {
+		return mentoriasDisponiveis;
+	}
+
+	public void setMentoriasDisponiveis(List<MentorModalidade> mentoriasDisponiveis) {
+		this.mentoriasDisponiveis = mentoriasDisponiveis;
+	}
+
 	@Override
 	public String toString() {
 		return "Mentor [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", whatsapp=" + whatsapp
 				+ ", email=" + email + ", tipoExperiencia=" + tipoExperiencia + ", dataNascimento=" + dataNascimento
 				+ "]";
 	}
-
+	
 }

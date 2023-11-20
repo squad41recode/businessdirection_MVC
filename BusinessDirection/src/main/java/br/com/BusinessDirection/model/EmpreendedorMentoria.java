@@ -22,13 +22,13 @@ public class EmpreendedorMentoria {
 	private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_MentorModalidade_id")
+	@JoinColumn(name = "fk_MentorModalidade_id", nullable = false)
 	private MentorModalidade mentorModalidade;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_Empreendedor_id")
+	@JoinColumn(name = "fk_Empreendedor_id", nullable = false)
 	private Empreendedor empreendedor;
-
+		
 	private String status;
 	private int encontrosFeitos;
 	private int faltas;
@@ -112,16 +112,6 @@ public class EmpreendedorMentoria {
 			String status, int encontrosFeitos, int faltas) {
 		super();
 		this.id = id;
-		this.mentorModalidade = mentorModalidade;
-		this.empreendedor = empreendedor;
-		this.status = status;
-		this.encontrosFeitos = encontrosFeitos;
-		this.faltas = faltas;
-	}
-
-	public EmpreendedorMentoria(MentorModalidade mentorModalidade, Empreendedor empreendedor, String status,
-			int encontrosFeitos, int faltas) {
-		super();
 		this.mentorModalidade = mentorModalidade;
 		this.empreendedor = empreendedor;
 		this.status = status;

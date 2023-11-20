@@ -1,11 +1,15 @@
 package br.com.BusinessDirection.model;
 
 import java.sql.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,98 +30,163 @@ public class Empreendedor {
 	private String estado;
 	private String bairro;
 	private String CEP;
+	
+    public String getNomeCompleto() {
+        return nome + " " + sobrenome;
+    }
+	
+	@OneToMany(mappedBy = "empreendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY )//(fetch = FetchType.EAGER)
+	private List<EmpreendedorMentoria>  mentoriasAdquiridas;
 
 	public Empreendedor() {
 		super();
 	}
 
+
+
 	public Long getId() {
 		return id;
 	}
+
+
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+
+
 	public String getNome() {
 		return nome;
 	}
+
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+
+
 	public String getSobrenome() {
 		return sobrenome;
 	}
+
+
 
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
 
+
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
+
+
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
+
+
 	public String getTelefone() {
 		return telefone;
 	}
+
+
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
+
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
 	}
+
+
 
 	public void setNomeEmpresa(String nomeEmpresa) {
 		this.nomeEmpresa = nomeEmpresa;
 	}
 
+
+
 	public String getCidade() {
 		return cidade;
 	}
+
+
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 
+
+
 	public String getEstado() {
 		return estado;
 	}
+
+
 
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
+
+
 	public String getBairro() {
 		return bairro;
 	}
+
+
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
+
+
 	public String getCEP() {
 		return CEP;
 	}
 
-	public void setCEP(String Cep) {
-		CEP = Cep;
+
+
+	public void setCEP(String cEP) {
+		CEP = cEP;
 	}
+
+
+
+	public List<EmpreendedorMentoria> getMentoriasAdquiridas() {
+		return mentoriasAdquiridas;
+	}
+
+
+
+	public void setMentoriasAdquiridas(List<EmpreendedorMentoria> mentoriasAdquiridas) {
+		this.mentoriasAdquiridas = mentoriasAdquiridas;
+	}
+
+
 
 	@Override
 	public String toString() {

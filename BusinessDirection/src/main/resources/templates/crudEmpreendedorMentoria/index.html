@@ -2,14 +2,14 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 <head>
-	<title>Listagem Mentorias</title>
+	<title>Listagem Mentorias Adquiridas</title>
 </head>
 <body>
 	<main>
 		<div class="row">
 			<div class="col-sm-12">
 				
-				<a th:href="@{/mentorias-adquiridas/cadastrar}" class="btn btn-primary my-1">Nova mentoria</a>
+				<a th:href="@{/mentorias-adquiridas/cadastrar}" class="btn btn-primary my-1">Nova mentoria adquirida</a>
 				
 				<div class="card">
 					
@@ -20,6 +20,8 @@
 									<th>Id Mentoria Adquirida</th>
 									<th>Id da Mentoria Disponível</th>
 									<th>Nome do empreendedor</th>
+									<th>Ações</th>
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -28,8 +30,7 @@
 									<td th:text="${mentoriaAdq.mentorModalidade.id}">Id da Mentoria Disponível</td>
 									<td th:text="${mentoriaAdq.empreendedor.nome}">Nome do empreendedor</td>
 									<td>
-										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
-												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
+										<div class="btn-group">
 											<a type="button"  class="btn btn-primary"
 												th:href="@{/mentorias-adquiridas/{id} (id=${mentoriaAdq.id})}">
 												<i class="bi bi-info-circle "></i>

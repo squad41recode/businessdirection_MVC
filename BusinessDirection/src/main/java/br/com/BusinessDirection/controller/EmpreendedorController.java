@@ -18,7 +18,6 @@ public class EmpreendedorController {
 
 	@Autowired
 	private EmpreendedorRepository empreendedorRepository;
-	/* private ; */
 
 	@GetMapping
 	public ModelAndView home() {
@@ -28,7 +27,6 @@ public class EmpreendedorController {
 		return modelAndView;
 	}
 
-	//TERMINAR TODOS OS RELACIOMENTOS DA CLASSE EMPREENDEDOR
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudEmpreendedor/detalhes");

@@ -2,14 +2,14 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 <head>
-	<title>Listagem Mentorias</title>
+	<title>Listagem Modalidades de Mentorias</title>
 </head>
 <body>
 	<main>
 		<div class="row">
 			<div class="col-sm-12">
 				
-				<a th:href="@{/mentorias/cadastrar}" class="btn btn-primary my-1">Nova mentoria</a>
+				<a th:href="@{/modalidades-mentorias/cadastrar}" class="btn btn-primary my-1">Nova modalidade</a>
 				
 				<div class="card">
 					
@@ -19,30 +19,21 @@
 								<tr>
 									<th>Id</th>
 									<th>Nome da modalidade</th>
-									<!--<th>Conteudo online</th>-->
-									<th>Qtd Empreendedores</th>
-									<th>Qtd Mentores</th>
+									<th>Ações</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="mentoria : ${modalidadesMentorias}">
-									<td th:text="${mentoria.id}">000</td>
-									<td th:text="${mentoria.nomeModalidade}">Exemplo nome modalidade</td>
-									<td th:text="${mentoria.qtdEmpreendedores}">0</td>
-									<td th:text="${mentoria.qtdMentores}">0</td>
+								<tr th:each="modalidade : ${modalidadesMentorias}">
+									<td th:text="${modalidade.id}">000</td>
+									<td th:text="${modalidade.nomeModalidade}">Exemplo nome modalidade</td>
 									<td>
-										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
-												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
-											<a type="button"  class="btn btn-primary"
-												th:href="@{/mentorias/{id} (id=${mentoria.id})}">
-												<i class="bi bi-info-circle "></i>
-											</a>
+										<div class="btn-group">
 											<a type="button" class="btn btn-warning"
-												th:href="@{/mentorias/editar/{id} (id=${mentoria.id})}">
+												th:href="@{/modalidades-mentorias/editar/{id} (id=${modalidade.id})}">
 												<i class="bi bi-pencil-square"></i>
 											</a>
 											<a type="button" class="btn btn-danger"
-												th:href="@{/mentorias/excluir/{id} (id=${mentoria.id})}"
+												th:href="@{/modalidades-mentorias/excluir/{id} (id=${modalidade.id})}"
 												onclick="return confirm('Tem certeza que deseja excluir?');">
 												<i class="bi bi-trash3"></i>
 											</a>

@@ -20,20 +20,31 @@
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
 								<label for="mentor">Mentor Responsável</label>
+								<!--<select th:field="*{mentor}" class="form-select" aria-label="Default select example">
+									<option th:each="mentor : ${mentores}" th:text="${mentor.nome}"
+										th:value="${mentor}">mentor</option>
+								</select>-->
 								<select th:field="*{mentor}" class="form-select" aria-label="Default select example">
 									<option th:each="mentor : ${mentores}" th:text="${mentor.nome}"
 										th:value="${mentor.id}">mentor</option>
 								</select>
+
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
 								<label for="modalidadeMentoria">Modalidade da Mentoria</label>
-								<input type="hidden" th:field="*{mentorModalidade.modalidadeMentoria?.id}" />
+								<!--<input type="hidden" th:field="*{mentorModalidade.modalidadeMentoria?.id}" />-->
+								<!--<select th:field="*{modalidadeMentoria}" class="form-select"
+									aria-label="Default select example">
+									<option th:each="modalidade : ${modalidades}" th:text="${modalidade.nomeModalidade}"
+										th:value="${modalidadeMentoria}">modalidade
+									</option>
+								</select>-->
 								<select th:field="*{modalidadeMentoria}" class="form-select"
 									aria-label="Default select example">
 									<option th:each="modalidade : ${modalidades}" th:text="${modalidade.nomeModalidade}"
-										th:value="${modalidadeMentoria?.id}">modalidade
+										th:value="${modalidade.id}">modalidade
 									</option>
 								</select>
 							</div>

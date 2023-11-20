@@ -22,12 +22,13 @@
 									<th>Dia da Semana</th>
 									<th>Horario</th>
 									<th>Nome Mentor</th>
+									<th>Ações</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="mentoriaDisp : ${MentorModalidades}">
 									<td th:text="${mentoriaDisp.id}">000</td>
-									<td th:text="${mentoriaDisp.modalidadeMentoria.nome}">Exemplo nome modalidade</td>
+									<td th:text="${mentoriaDisp.modalidadeMentoria.nomeModalidade}">Exemplo nome modalidade</td>
 									<td th:text="${mentoriaDisp.diaSemana}">Dia</td>
 									<td th:text="${mentoriaDisp.horario}">Horario</td>
 									<td th:text="${mentoriaDisp.mentor.nome}">nome mentor</td>
