@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
+
 <head>
 	<title>Listagem Conteúdos Online</title>
 </head>
+
 <body>
 	<main>
 		<div class="row">
 			<div class="col-sm-12">
-				
+
 				<a th:href="@{/conteudos-online/cadastrar}" class="btn btn-primary my-1">Novo Conteúdo Online</a>
-				
+
 				<div class="card">
-					
+
 					<div class="card-body table-responsive p-0">
 						<table class="table table-hover text-nowrap">
 							<thead>
@@ -25,15 +27,11 @@
 							<tbody>
 								<tr th:each="conteudoOnline : ${ConteudosOnline}">
 									<td th:text="${conteudoOnline.id}">183</td>
-									<td th:text="${conteudoOnline.modalidadeMentoria.nomeModalidade}">maria@email.com</td>
+									<td th:text="${conteudoOnline.modalidadeMentoria.nomeModalidade}">maria@email.com
+									</td>
 									<td th:text="${conteudoOnline.conteudo}">conteudo</td>
 									<td>
-										<div class="btn-group"><!--data-toggle="popover" data-placement="top"
-												data-content="Detalhes" data-trigger="hover" class="btn btn-primary"-->
-											<a type="button"  class="btn btn-primary"
-												th:href="@{/conteudos-online/{id} (id=${conteudoOnline.id})}">
-												<i class="bi bi-info-circle "></i>
-											</a>
+										<div class="btn-group">
 											<a type="button" class="btn btn-warning"
 												th:href="@{/conteudos-online/editar/{id} (id=${conteudoOnline.id})}">
 												<i class="bi bi-pencil-square"></i>
@@ -54,4 +52,5 @@
 		</div>
 	</main>
 </body>
+
 </html>
