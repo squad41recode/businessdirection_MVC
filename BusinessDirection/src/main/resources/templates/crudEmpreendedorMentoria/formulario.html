@@ -20,7 +20,8 @@
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
 								<label for="mentDispo">Mentoria Disponível</label>
-								<select th:field="*{mentorModalidade}" class="form-select" aria-label="Default select example">
+								<select th:field="*{mentorModalidade}" class="form-select"
+									aria-label="Default select example">
 									<option th:each="mentDispo : ${mentoriasDisponiveis}" th:text="${mentDispo.id}"
 										th:value="${mentDispo.id}">mentoria disponivel</option>
 								</select>
@@ -31,16 +32,30 @@
 								<label for="empreendedor">Empreendedor</label>
 								<select th:field="*{empreendedor}" class="form-select"
 									aria-label="Default select example">
-									<option th:each="empreendedor : ${empreendedores}" th:text="${empreendedor.getNomeCompleto}"
-										th:value="${empreendedor.id}">empreendedor</option>
+									<option th:each="empreendedor : ${empreendedores}"
+										th:text="${empreendedor.getNomeCompleto}" th:value="${empreendedor.id}">
+										empreendedor</option>
 								</select>
 							</div>
 						</div>
 					</div>
 				</fieldset>
-				<div class=" text-center row mt-3">
-					
-					<button type="submit" class="btn btn-primary col mx-auto" onclick="return validarEmpreendedorMentoria()">Salvar</button>
+				<!-- alert message -->
+				<div th:if="${alertMessage}" class="alert alert-danger" role="alert">
+					<p th:text="${alertMessage}"></p>
+				</div>
+
+				<!-- alert message -->
+<!--				<div th:if="${alertMessage}" class="alert alert-danger" role="alert">
+					<script th:inline="javascript">
+						/*<![CDATA[*/
+						// Display a JavaScript alert
+						window.alert("Mentoria indisponível para o empreendedor selecionado!!!");
+        /*]]>*/
+					</script>
+				</div>-->
+				<div  class="text-center row mt-3">
+					<button type="submit" class="btn btn-primary col mx-auto">Salvar</button>
 				</div>
 			</div>
 
