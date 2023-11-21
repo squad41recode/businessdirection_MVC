@@ -27,3 +27,5 @@
 	});
 });
 */
+
+window.alert("Mentoria indisponível para o empreendedor selecionado.")
