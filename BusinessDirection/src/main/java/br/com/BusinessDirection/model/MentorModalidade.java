@@ -1,6 +1,7 @@
 package br.com.BusinessDirection.model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,15 +32,19 @@ public class MentorModalidade {
 	private String diaSemana;
 
 	private String horario;
+	
+	@Column(name = "ativo", nullable = false)
+	private boolean ativo = true; //ativo por padrao
 
 	public MentorModalidade(Long id, Mentor mentor, ModalidadeMentoria modalidadeMentoria, String diaSemana,
-			String horario) {
+			String horario, boolean ativo) {
 		super();
 		this.id = id;
 		this.mentor = mentor;
 		this.modalidadeMentoria = modalidadeMentoria;
 		this.diaSemana = diaSemana;
 		this.horario = horario;
+		this.ativo = ativo;
 	}
 
 	public MentorModalidade(Mentor mentor, ModalidadeMentoria modalidadeMentoria, String diaSemana, String horario) {
@@ -91,6 +96,14 @@ public class MentorModalidade {
 
 	public void setHorario(String horario) {
 		this.horario = horario;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	@Override

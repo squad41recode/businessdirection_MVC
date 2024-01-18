@@ -1,5 +1,7 @@
 package br.com.BusinessDirection.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,7 @@ public class MentorModalidadeController {
 	@GetMapping
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/index");
-		modelAndView.addObject("MentorModalidades", mentorModalidadeRepository.findAll());
+		modelAndView.addObject("MentorModalidades", mentorModalidadeRepository.findAllAtivos());
 
 		return modelAndView;
 	}
@@ -37,7 +39,7 @@ public class MentorModalidadeController {
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/detalhes");
-		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.getReferenceById(id));
+		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.findByIdAndAtivo(id, true));
 
 		return modelAndView;
 	}
@@ -64,6 +66,7 @@ public class MentorModalidadeController {
 
 	@PostMapping({ "/cadastrar", "/editar/{id}" })
 	public String salvar(MentorModalidade mentorModalidade) {
+		mentorModalidade.setAtivo(true); 
 		mentorModalidadeRepository.save(mentorModalidade);
 
 		return "redirect:/mentorias-disponiveis";
@@ -71,7 +74,12 @@ public class MentorModalidadeController {
 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
-		mentorModalidadeRepository.deleteById(id);
+		// mentorModalidadeRepository.deleteById(id);
+		Optional<MentorModalidade> mentorModalidadeOptional = mentorModalidadeRepository.findById(id);
+		mentorModalidadeOptional.ifPresent(mentorModalidade -> {
+			mentorModalidade.setAtivo(false);
+			mentorModalidadeRepository.save(mentorModalidade);
+		});
 
 		return "redirect:/mentorias-disponiveis";
 	}
