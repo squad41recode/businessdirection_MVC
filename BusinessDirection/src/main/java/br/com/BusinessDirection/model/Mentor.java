@@ -31,8 +31,9 @@ public class Mentor {
         return nome + " " + sobrenome;
     }
 
-	@OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<MentorModalidade> mentoriasDisponiveis;
+	//@OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "mentor",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MentorModalidade> mentoriasDisponiveis;
 
 
 	public Long getId() {

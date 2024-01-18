@@ -20,12 +20,13 @@ public class MentorModalidade {
 
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-
+	//cascade = CascadeType.ALL,
+	@ManyToOne( fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_Mentor_id")
 	private Mentor mentor;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//cascade = CascadeType.ALL,
+	@ManyToOne( fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_ModalidadeMentoria_id", nullable = false)
 	private ModalidadeMentoria modalidadeMentoria;
 
