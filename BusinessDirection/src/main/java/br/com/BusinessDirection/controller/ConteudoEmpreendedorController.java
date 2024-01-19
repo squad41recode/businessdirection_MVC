@@ -1,7 +1,6 @@
 package br.com.BusinessDirection.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,16 +33,15 @@ public class ConteudoEmpreendedorController {
 	@GetMapping
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView("crudConteudoEmpreendedor/index");
-		modelAndView.addObject("conteudosEmpreendedor", conteudoEmpreendedorRepository.findAllAtivos());
+		modelAndView.addObject("conteudosEmpreendedor", conteudoEmpreendedorRepository.findAll());
 
 		return modelAndView;
 	}
 
-	// TERMINAR TODOS OS RELACIOMENTOS DA CLASSE EMPREENDEDOR
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudConteudoEmpreendedor/detalhes");
-		modelAndView.addObject("conteudoEmpreendedor", conteudoEmpreendedorRepository.findByIdAndAtivo(id, true));
+		modelAndView.addObject("conteudoEmpreendedor", conteudoEmpreendedorRepository.findById(id));
 
 		return modelAndView;
 	}
@@ -86,12 +84,7 @@ public class ConteudoEmpreendedorController {
 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
-		// conteudoOnlineRepository.deleteById(id);
-		Optional<ConteudoEmpreendedor> conteudoEmpreendedorOptional = conteudoEmpreendedorRepository.findById(id);
-		conteudoEmpreendedorOptional.ifPresent(conteudoEmpreendedor -> {
-			conteudoEmpreendedor.setAtivo(false);
-			conteudoEmpreendedorRepository.save(conteudoEmpreendedor);
-		});
+		conteudoEmpreendedorRepository.deleteById(id);
 
 		return "redirect:/conteudo-estudado";
 	}
