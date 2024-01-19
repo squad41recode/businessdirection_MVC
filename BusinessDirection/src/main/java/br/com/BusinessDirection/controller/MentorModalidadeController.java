@@ -1,7 +1,5 @@
 package br.com.BusinessDirection.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,17 +19,17 @@ public class MentorModalidadeController {
 
 	@Autowired
 	private MentorModalidadeRepository mentorModalidadeRepository;
-	
+
 	@Autowired
 	private MentorRepository mentorRepository;
-	
+
 	@Autowired
 	private ModalidadeMentoriaRepository modalidadeMentoriaRepository;
 
 	@GetMapping
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/index");
-		modelAndView.addObject("MentorModalidades", mentorModalidadeRepository.findAllAtivos());
+		modelAndView.addObject("MentorModalidades", mentorModalidadeRepository.findAll());
 
 		return modelAndView;
 	}
@@ -39,7 +37,7 @@ public class MentorModalidadeController {
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudMentorModalidade/detalhes");
-		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.findByIdAndAtivo(id, true));
+		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.findById(id));
 
 		return modelAndView;
 	}
@@ -60,13 +58,13 @@ public class MentorModalidadeController {
 		modelAndView.addObject("mentorModalidade", mentorModalidadeRepository.getReferenceById(id));
 		modelAndView.addObject("mentores", mentorRepository.findAll());
 		modelAndView.addObject("modalidades", modalidadeMentoriaRepository.findAll());
-		
+
 		return modelAndView;
 	}
 
 	@PostMapping({ "/cadastrar", "/editar/{id}" })
 	public String salvar(MentorModalidade mentorModalidade) {
-		mentorModalidade.setAtivo(true); 
+		mentorModalidade.setAtivo(true);
 		mentorModalidadeRepository.save(mentorModalidade);
 
 		return "redirect:/mentorias-disponiveis";
@@ -74,12 +72,14 @@ public class MentorModalidadeController {
 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
-		// mentorModalidadeRepository.deleteById(id);
-		Optional<MentorModalidade> mentorModalidadeOptional = mentorModalidadeRepository.findById(id);
-		mentorModalidadeOptional.ifPresent(mentorModalidade -> {
-			mentorModalidade.setAtivo(false);
-			mentorModalidadeRepository.save(mentorModalidade);
-		});
+		mentorModalidadeRepository.deleteById(id);
+		/*
+		 * Optional<MentorModalidade> mentorModalidadeOptional =
+		 * mentorModalidadeRepository.findById(id);
+		 * mentorModalidadeOptional.ifPresent(mentorModalidade -> {
+		 * mentorModalidade.setAtivo(false);
+		 * mentorModalidadeRepository.save(mentorModalidade); });
+		 */
 
 		return "redirect:/mentorias-disponiveis";
 	}

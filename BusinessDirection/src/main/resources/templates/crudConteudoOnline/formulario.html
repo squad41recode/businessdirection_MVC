@@ -27,9 +27,9 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group ">
 							<label for="estado">Modalidade da mentoria</label>
-							<select th:field="*{modalidadeMentoria}" class="form-select"
+							<select th:field="*{modalidadeMentoria.id}" class="form-select"
 								aria-label="Default select example">
-								<option th:each="modalidade : ${mentorias}" th:text="${modalidade}"
+								<option th:each="modalidade : ${modalidades}" th:text="${modalidade.nomeModalidade}"
 									th:value="${modalidade.id}">Modalidade</option>
 							</select>
 						</div>

@@ -1,6 +1,5 @@
 package br.com.BusinessDirection.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,22 +19,20 @@ public class MentorModalidade {
 
 	private Long id;
 
-	//cascade = CascadeType.ALL,
-	@ManyToOne( fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_Mentor_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_Mentor_id", nullable = false)
 	private Mentor mentor;
 
-	//cascade = CascadeType.ALL,
-	@ManyToOne( fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_ModalidadeMentoria_id", nullable = false)
 	private ModalidadeMentoria modalidadeMentoria;
 
 	private String diaSemana;
 
 	private String horario;
-	
+
 	@Column(name = "ativo", nullable = false)
-	private boolean ativo = true; //ativo por padrao
+	private boolean ativo = true; // ativo por padrao
 
 	public MentorModalidade(Long id, Mentor mentor, ModalidadeMentoria modalidadeMentoria, String diaSemana,
 			String horario, boolean ativo) {

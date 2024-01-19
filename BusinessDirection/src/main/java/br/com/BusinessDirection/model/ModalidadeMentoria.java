@@ -19,7 +19,7 @@ public class ModalidadeMentoria {
 
 	private String nomeModalidade;
 
-	@OneToOne(mappedBy = "modalidadeMentoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToOne(mappedBy = "modalidadeMentoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)// , orphanRemoval = true
 	private ConteudoOnline conteudoOnline;
 
 //	talvez criar um metodo que calcula a qtd e passa o valor pra ca

@@ -39,7 +39,7 @@ public class EmpreendedorMentoriaController {
 	@GetMapping("/{id}")
 	public ModelAndView detalhes(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudEmpreendedorMentoria/detalhes");
-		modelAndView.addObject("empreendedorMentoria", empreendedorMentoriaRepository.getReferenceById(id));
+		modelAndView.addObject("empreendedorMentoria", empreendedorMentoriaRepository.findById(id));
 
 		return modelAndView;
 	}
@@ -48,7 +48,8 @@ public class EmpreendedorMentoriaController {
 	public ModelAndView cadastrar() {
 		ModelAndView modelAndView = new ModelAndView("crudEmpreendedorMentoria/formulario");
 		modelAndView.addObject("empreendedorMentoria", new EmpreendedorMentoria());
-		modelAndView.addObject("mentoriasDisponiveis", mentorModalidadeRepository.findAll());
+		modelAndView.addObject("mentoriasDisponiveis",
+				mentorModalidadeRepository.listarMentoriasSemLigacaoComEmpreendedor());
 		modelAndView.addObject("empreendedores", empreendedorRepository.findAll());
 
 		return modelAndView;
@@ -58,7 +59,8 @@ public class EmpreendedorMentoriaController {
 	public ModelAndView editar(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("crudEmpreendedorMentoria/formulario");
 		modelAndView.addObject("empreendedorMentoria", empreendedorMentoriaRepository.getReferenceById(id));
-		modelAndView.addObject("mentoriasDisponiveis", mentorModalidadeRepository.findAll());
+		modelAndView.addObject("mentoriasDisponiveis",
+				mentorModalidadeRepository.listarMentoriasSemLigacaoComEmpreendedor());
 		modelAndView.addObject("empreendedores", empreendedorRepository.findAll());
 
 		return modelAndView;
@@ -82,6 +84,13 @@ public class EmpreendedorMentoriaController {
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
 		empreendedorMentoriaRepository.deleteById(id);
+		/*
+		 * Optional<EmpreendedorMentoria> empreendedorMentoriaOptional =
+		 * empreendedorMentoriaRepository.findById(id);
+		 * empreendedorMentoriaOptional.ifPresent(empreendedorMentoria -> {
+		 * empreendedorMentoria.setAtivo(false);
+		 * empreendedorMentoriaRepository.save(empreendedorMentoria); });
+		 */
 
 		return "redirect:/mentorias-adquiridas";
 	}

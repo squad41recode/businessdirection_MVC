@@ -17,7 +17,10 @@
 						<table class="table table-hover text-nowrap">
 							<thead>
 								<tr>
+									<th>Id Conteúdo estudado</th>
+									<th>Id Empreendedor</th>
 									<th>Empreendedor</th>
+									<th>Id Conteúdo</th>
 									<th>Conteúdo</th>
 									<th>Status</th>
 									<th>Ínicio</th>
@@ -27,8 +30,11 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="cEstudado: ${ConteudoEmpreendedor}">
+								<tr th:each="cEstudado: ${conteudosEmpreendedor}">
+									<td th:text="${cEstudado.id}">Staus</td>
+									<td th:text="${cEstudado.empreendedor.id}">Staus</td>
 									<td th:text="${cEstudado.empreendedor.getNomeCompleto()}">Nome do empreendedor</td>
+									<td th:text="${cEstudado.conteudoOnline.id}">Conteudo</td>
 									<td th:text="${cEstudado.conteudoOnline.conteudo}">Conteudo</td>
 									<td th:text="${cEstudado.status}">Staus</td>
 									<td th:text="${cEstudado.dataInicio}">Início</td>
