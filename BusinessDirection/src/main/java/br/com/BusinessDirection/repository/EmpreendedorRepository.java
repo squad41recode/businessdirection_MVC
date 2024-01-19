@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.BusinessDirection.model.Empreendedor;
 
-public interface EmpreendedorRepository extends JpaRepository<Empreendedor, Long>{
+public interface EmpreendedorRepository extends JpaRepository<Empreendedor, Long> {
 
 	@EntityGraph(attributePaths = { "mentoriasAdquiridas" })
-	List<Empreendedor> findAll();
+	List<Empreendedor> findAll();//, "conteudosEstudados"
+
 }

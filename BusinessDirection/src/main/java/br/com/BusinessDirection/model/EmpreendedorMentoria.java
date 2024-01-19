@@ -2,7 +2,7 @@ package br.com.BusinessDirection.model;
 
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,17 +22,29 @@ public class EmpreendedorMentoria {
 
 	private Long id;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	// cascade = CascadeType.ALL,
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_MentorModalidade_id", nullable = false)
 	private MentorModalidade mentorModalidade;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_Empreendedor_id", nullable = false)
 	private Empreendedor empreendedor;
-		
+
 	private String status;
 	private int encontrosFeitos;
 	private int faltas;
+
+	@Column(name = "ativo", nullable = false)
+	private boolean ativo = true; // ativo por padrao
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 
 	public Long getId() {
 		return id;
@@ -101,8 +113,7 @@ public class EmpreendedorMentoria {
 		EmpreendedorMentoria other = (EmpreendedorMentoria) obj;
 
 		return encontrosFeitos == other.encontrosFeitos && faltas == other.faltas
-				&& Objects.equals(empreendedor, other.empreendedor)
-				&& Objects.equals(id, other.id)
+				&& Objects.equals(empreendedor, other.empreendedor) && Objects.equals(id, other.id)
 				&& Objects.equals(mentorModalidade, other.mentorModalidade) && Objects.equals(status, other.status);
 
 	}
@@ -110,13 +121,13 @@ public class EmpreendedorMentoria {
 	@Override
 	public String toString() {
 
-		return "EmpreendedorMentoria [id=" + id + ", mentorModalidade="
-				+ mentorModalidade + ", empreendedor=" + empreendedor + ", status=" + status + ", encontrosFeitos="
-				+ encontrosFeitos + ", faltas=" + faltas + "]";
+		return "EmpreendedorMentoria [id=" + id + ", mentorModalidade=" + mentorModalidade + ", empreendedor="
+				+ empreendedor + ", status=" + status + ", encontrosFeitos=" + encontrosFeitos + ", faltas=" + faltas
+				+ "]";
 	}
 
-	public EmpreendedorMentoria(Long id, MentorModalidade mentorModalidade, Empreendedor empreendedor,
-			String status, int encontrosFeitos, int faltas) {
+	public EmpreendedorMentoria(Long id, MentorModalidade mentorModalidade, Empreendedor empreendedor, String status,
+			int encontrosFeitos, int faltas) {
 		super();
 		this.id = id;
 		this.mentorModalidade = mentorModalidade;
@@ -130,4 +141,3 @@ public class EmpreendedorMentoria {
 	}
 
 }
-

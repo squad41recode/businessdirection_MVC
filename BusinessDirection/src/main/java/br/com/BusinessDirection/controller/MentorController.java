@@ -55,6 +55,7 @@ public class MentorController {
 
 	@PostMapping({ "/cadastrar", "/editar/{id}" })
 	public String salvar(Mentor mentor) {
+		mentor.setMentoriasDisponiveis(null);
 		mentorRepository.save(mentor);
 
 		return "redirect:/mentores";

@@ -3,13 +3,13 @@
 	th:replace="~{layout :: layout(~{::title}, ~{::main}, ~{::scripts})}">
 
 <head>
-	<title>Adquirir Mentoria</title>
+	<title>Adquirir Conteudo</title>
 </head>
 
 <body>
 	<main>
 		<!-- form  -->
-		<form method="POST" th:object="${ConteudoEmpreendedor}" class="  container-fluid mx-auto">
+		<form method="POST" th:object="${conteudoEmpreendedor}" class="  container-fluid mx-auto">
 			<div class="  form-crud ">
 				<fieldset>
 					<legend>Dados</legend>
@@ -19,17 +19,17 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
-								<label for="mentDispo">Mentoria Disponível</label>
-								<select th:field="*{mentorModalidade}" class="form-select" aria-label="Default select example">
-									<option th:each="mentDispo : ${mentoriasDisponiveis}" th:text="${mentDispo.id}"
-										th:value="${mentDispo.id}">mentoria disponivel</option>
+								<label for="contOnline">Mentoria Disponível</label>
+								<select th:field="*{conteudoOnline.id}" class="form-select" aria-label="Default select example">
+									<option th:each="contOnline : ${conteudosOnline}" th:text="${contOnline.id}"
+										th:value="${contOnline.id}">conteúdo online disponivel</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-12">
 							<div class="form-group">
 								<label for="empreendedor">Empreendedor</label>
-								<select th:field="*{empreendedor}" class="form-select"
+								<select th:field="*{empreendedor.id}" class="form-select"
 									aria-label="Default select example">
 									<option th:each="empreendedor : ${empreendedores}" th:text="${empreendedor.getNomeCompleto}"
 										th:value="${empreendedor.id}">empreendedor</option>
@@ -40,7 +40,7 @@
 				</fieldset>
 				<div class=" text-center row mt-3">
 					
-					<button type="submit" class="btn btn-primary col mx-auto" onclick="return validarEmpreendedorMentoria()">Salvar</button>
+					<button type="submit" class="btn btn-primary col mx-auto" >Salvar</button><!--onclick="return validarEmpreendedorMentoria()"-->
 				</div>
 			</div>
 

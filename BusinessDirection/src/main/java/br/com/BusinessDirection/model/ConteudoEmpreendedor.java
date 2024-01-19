@@ -2,7 +2,9 @@ package br.com.BusinessDirection.model;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,11 +20,11 @@ public class ConteudoEmpreendedor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_ConteudoOnline_id", nullable = false)
 	private ConteudoOnline conteudoOnline;
- 
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_empreendedor_id", nullable = false)
 	private Empreendedor empreendedor;
 
@@ -30,12 +32,23 @@ public class ConteudoEmpreendedor {
 	private Date dataInicio;
 	private Date dataFim;
 
+	@Column(name = "ativo", nullable = false)
+	private boolean ativo = true;
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
 	public ConteudoEmpreendedor() {
 		super();
 	}
 
 	public ConteudoEmpreendedor(Long id, ConteudoOnline conteudoOnline, Empreendedor empreendedor, String status,
-			Date dataInicio, Date dataFim) {
+			Date dataInicio, Date dataFim, boolean ativo) {
 		super();
 		this.id = id;
 		this.conteudoOnline = conteudoOnline;
@@ -43,6 +56,7 @@ public class ConteudoEmpreendedor {
 		this.status = status;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
+		this.ativo = ativo;
 	}
 
 	public Long getId() {
@@ -92,7 +106,5 @@ public class ConteudoEmpreendedor {
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
-
-
 
 }
